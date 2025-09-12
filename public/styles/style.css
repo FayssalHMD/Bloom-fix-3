@@ -1195,11 +1195,11 @@ ul {
 
 .perspective-carousel {
     position: relative;
-    min-height: 400px; /* <-- THIS IS THE FIX */
+    height: 400px; /* <-- THIS IS THE FIX */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 0; /* Add some vertical padding */
+    
 }
 
 .carousel-cards {
@@ -1217,8 +1217,7 @@ ul {
     margin: auto;
     width: 60%; /* Increased width */
     max-width: 550px; /* Increased max-width */
-    height: auto;
-    min-height: 350px;
+    height: 100%;
     padding: 40px 50px; /* Increased padding */
     display: flex;
     flex-direction: column;
@@ -1544,9 +1543,6 @@ ul {
 #theme-toggle-btn{ /* <-- Add this line */
     display: none;
 }
-    .nav-actions .nav-icon-btn {
-    display: none;
-}
     .nav-actions {
         gap: 0;
     }
@@ -1679,9 +1675,6 @@ ul {
         width: 85%;
         max-width: 350px;
         padding: 25px;
-        height: 380px; /* Set a fixed, generous height for mobile */
-    justify-content: flex-start; /* Align content to the top */
-    overflow-y: auto; /* Allow vertical scrolling if content overflows */
     }
     .testimonial-card.prev {
         transform: translateX(-110%) scale(1);
@@ -4516,6 +4509,7 @@ ul {
     border-radius: 50px;
 
 }
+
 
 
 
