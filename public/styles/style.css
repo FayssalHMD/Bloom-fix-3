@@ -1540,9 +1540,10 @@ ul {
 .nav-menu.desktop-only,
 .nav-actions .user-account-icon,
 .nav-actions .cart-icon,
-#theme-toggle-btn{ /* <-- Add this line */
-    display: none;
-}
+.nav-actions #search-toggle-btn, /* Also hide the search icon */
+.nav-actions #theme-toggle-btn { /* And hide the desktop theme toggler */
+        display: none;
+    }
     .nav-actions {
         gap: 0;
     }
@@ -4509,6 +4510,7 @@ ul {
     border-radius: 50px;
 
 }
+
 
 
 
