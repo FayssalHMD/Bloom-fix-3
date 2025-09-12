@@ -1199,6 +1199,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden; /* ADD THIS LINE */
 }
 
 .carousel-cards {
@@ -4506,4 +4507,5 @@ ul {
     padding: 12px 30px;
     font-size: 1rem;
     border-radius: 50px;
+
 }
