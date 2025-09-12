@@ -1539,7 +1539,7 @@ ul {
 .nav-menu.desktop-only,
 .nav-actions .user-account-icon,
 .nav-actions .cart-icon,
-#theme-toggle-btn { /* <-- Add this line */
+#theme-toggle-btn,.nav-actions { /* <-- Add this line */
     display: none;
 }
     .nav-actions {
@@ -4508,4 +4508,5 @@ ul {
     border-radius: 50px;
 
 }
+
 
