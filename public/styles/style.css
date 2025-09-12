@@ -1195,10 +1195,11 @@ ul {
 
 .perspective-carousel {
     position: relative;
-    height: 400px; /* Increased height */
+    min-height: 400px; /* <-- THIS IS THE FIX */
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px 0; /* Add some vertical padding */
 }
 
 .carousel-cards {
@@ -1216,7 +1217,8 @@ ul {
     margin: auto;
     width: 60%; /* Increased width */
     max-width: 550px; /* Increased max-width */
-    height: 100%;
+    height: auto;
+    min-height: 350px;
     padding: 40px 50px; /* Increased padding */
     display: flex;
     flex-direction: column;
@@ -4508,5 +4510,6 @@ ul {
     border-radius: 50px;
 
 }
+
 
 
