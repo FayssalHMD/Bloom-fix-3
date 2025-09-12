@@ -179,6 +179,26 @@ app.use(i18nextHttpMiddleware.handle(i18nextInstance));
 //                  END OF I18N CHANGES
 // ==================================================
 
+// ==================================================
+//           START: SET ARABIC AS DEFAULT
+// ==================================================
+app.use((req, res, next) => {
+    // This middleware runs after i18next has detected the language.
+    // 'req.language' will be the detected language (e.g., 'fr' from a cookie).
+    // 'req.languages' is an array of detected languages.
+    
+    // If no language was detected from the cookie or query string...
+    if (!req.language || req.languages.length === 0) {
+        // ...then we manually set it to Arabic.
+        req.i18n.changeLanguage('ar');
+    }
+    next();
+});
+// ==================================================
+//            END: SET ARABIC AS DEFAULT
+// ==================================================
+
+
 
 
 // ==================================================

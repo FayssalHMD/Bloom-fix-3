@@ -63,7 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
     const navOverlay = document.getElementById('nav-overlay');
-    if (hamburger && mobileMenu && navOverlay) {
+    const mobileNavCloseBtn = document.getElementById('mobile-nav-close'); // ADD THIS LINE
+
+    if (hamburger && mobileMenu && navOverlay && mobileNavCloseBtn) { 
         const toggleMenu = () => {
             const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
             hamburger.classList.toggle('active');
@@ -74,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         hamburger.addEventListener('click', toggleMenu);
         navOverlay.addEventListener('click', toggleMenu);
+        mobileNavCloseBtn.addEventListener('click', toggleMenu); // ADD THIS LINE
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
                 toggleMenu();

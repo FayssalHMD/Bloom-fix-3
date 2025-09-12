@@ -4,21 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= t('auth.loginTitle') %> - Bloom</title>
-
-    <!-- ================================================== -->
-    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
-    <!-- ================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <!-- ================================================== -->
-    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
-    <!-- ================================================== -->
-
-    
     <link rel="icon" type="image/png" href="/images/title-icon.webp">
-    <link rel="stylesheet" href="/styles/style.css">
-    
+    <link rel="stylesheet" href="/dist/style.min.css">
 </head>
 <body class="no-scroll">
 
@@ -36,14 +26,12 @@
                 <div class="auth-errors"><p><%= message %></p></div>
             <% }) %>
 
-
             <form action="/login" method="POST" class="auth-form">
                 
                 <div class="form-group">
                      <label for="email"><%= t('forms.emailAddress') %></label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                <!-- MODIFICATION START -->
                 <div class="form-group">
                     <label for="password"><%= t('forms.password') %></label>
                     <div class="password-wrapper">
@@ -61,7 +49,6 @@
                 <div class="auth-extra-links">
                      <a href="/forgot-password" class="forgot-password-link"><%= t('auth.forgotPassword') %> </a>
                 </div>
-                <!-- MODIFICATION END -->
                 <button type="submit" class="btn-auth"><%= t('nav.login') %></button>
             </form>
 
@@ -72,7 +59,5 @@
     </main>
 
     <%- include('partials/footer') %>
-
-
 </body>
 </html>

@@ -3,25 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- FIX: Use the language-specific product name for the page title -->
-   <title><%= pageTitle %></title>
+    <title><%= pageTitle %></title>
     <meta name="description" content="<%= metaDescription %>">
-
-    <!-- ================================================== -->
-    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
-    <!-- ================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <!-- ================================================== -->
-    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
-    <!-- ================================================== -->
-
-    
     <link rel="icon" type="image/png" href="/images/title-icon.webp">
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/products.css">
-    
+    <link rel="stylesheet" href="/dist/style.min.css">
 </head>
 <body class="no-scroll">
 
@@ -50,7 +38,6 @@
                     </div>
                 </div>
                 <div class="product-purchase-panel">
-                    <!-- FIX: Display language-specific name and short description -->
                     <h1 id="product-name"><%= product.name[lng] || product.name.fr %></h1>
                     <p id="product-short-desc"><%= product.short_description[lng] || product.short_description.fr %></p>
 
@@ -61,7 +48,7 @@
                             <button id="quantity-plus" class="quantity-btn" aria-label="Augmenter la quantité">+</button>
                         </div>
                         <div class="price-container">
-                            <span id="product-price" data-base-price="<%= product.price %>"><%= parseFloat(product.price).toFixed(2).replace('.', ',') %> DA</span>
+                            <span id="product-price" data-base-price="<%= product.price %>"><%= formatPrice(product.price, lng) %></span>
                         </div>
                     </div>
                     
@@ -72,7 +59,6 @@
                                 data-product-name="<%= product.name[lng] || product.name.fr %>"
                                 data-product-price="<%= product.price %>"
                                 data-product-image="<%= primaryImage %>">
-                            <!-- FIX: Translate button text -->
                             <%= t('buttons.addToCart') %>
                         </button>
                         <button id="buy-now-btn" 
@@ -82,7 +68,6 @@
                                 data-item-price="<%= product.price %>"
                                 data-item-image="<%= primaryImage %>"
                                 data-is-pack="false">
-                            <!-- FIX: Translate button text -->
                             <%= t('buttons.buyNow') %>
                         </button>
                     </div>
@@ -92,18 +77,15 @@
 
         <section class="product-info-tabs">
             <div class="tab-nav">
-                <!-- FIX: Translate tab titles -->
                 <button class="tab-link active" data-tab="description"><%= t('product.description') %></button>
                 <button class="tab-link" data-tab="ingredients"><%= t('product.ingredients') %></button>
                 <button class="tab-link" data-tab="usage"><%= t('product.howToUse') %></button>
             </div>
             <div class="tab-content-container">
                 <div id="tab-description" class="tab-panel active">
-                    <!-- FIX: Display language-specific description -->
                     <p><%- (product.description[lng] || product.description.fr).replace(/\n/g, '<br>') %></p>
                 </div>
                 <div id="tab-ingredients" class="tab-panel">
-                    <!-- FIX: Select the correct language array before looping -->
                     <% const ingredients = product.ingredients[lng] && product.ingredients[lng].length > 0 ? product.ingredients[lng] : product.ingredients.fr; %>
                     <% if (ingredients && Array.isArray(ingredients)) { %>
                         <ul>
@@ -114,7 +96,6 @@
                     <% } %>
                 </div>
                 <div id="tab-usage" class="tab-panel">
-                    <!-- FIX: Select the correct language array before looping -->
                     <% const how_to_use = product.how_to_use[lng] && product.how_to_use[lng].length > 0 ? product.how_to_use[lng] : product.how_to_use.fr; %>
                     <% if (how_to_use && Array.isArray(how_to_use)) { %>
                         <ol>
@@ -128,55 +109,52 @@
         </section>
 
         <section class="product-reviews-section" id="product-reviews-section">
-    <!-- ================= START OF I18N CHANGES ================ -->
-    <h2 class="reviews-title"><%= t('product.reviewsTitle', { count: totalReviewsCount }) %></h2>
-    
-    <div id="reviews-list" class="reviews-list">
-        <% if (reviews && reviews.length > 0) { %>
-            <% reviews.forEach(review => { %>
-                <div class="review-card">
-                    <% if (locals.user && review.user && locals.user.id.toString() === review.user._id.toString()) { %>
-                        <button class="review-delete-btn" data-review-id="<%= review._id %>" aria-label="<%= t('aria.deleteReview') %>">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-                        </button>
-                    <% } %>
-                    <div class="review-card-header">
-                        <div class="review-card-author">
-                            <span class="review-card-name"><%= review.name %></span>
-                            <% if (review.user && review.user.email) { %>
-                                <span class="review-card-email"><%= maskEmail(review.user.email) %></span>
+            <h2 class="reviews-title"><%= t('product.reviewsTitle', { count: totalReviewsCount }) %></h2>
+            <div id="reviews-list" class="reviews-list">
+                <% if (reviews && reviews.length > 0) { %>
+                    <% reviews.forEach(review => { %>
+                        <div class="review-card">
+                            <% if (locals.user && review.user && locals.user.id.toString() === review.user._id.toString()) { %>
+                                <button class="review-delete-btn" data-review-id="<%= review._id %>" aria-label="<%= t('aria.deleteReview') %>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+                                </button>
                             <% } %>
-                        </div>
-                        <div class="star-rating-display">
-                            <% for(let i = 0; i < 5; i++) { %>
-                                <div class="star-icon <%= i < review.rating ? '' : 'empty' %>">
-                                    <svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <div class="review-card-header">
+                                <div class="review-card-author">
+                                    <span class="review-card-name"><%= review.name %></span>
+                                    <% if (review.user && review.user.email) { %>
+                                        <span class="review-card-email"><%= maskEmail(review.user.email) %></span>
+                                    <% } %>
                                 </div>
-                            <% } %>
+                                <div class="star-rating-display">
+                                    <% for(let i = 0; i < 5; i++) { %>
+                                        <div class="star-icon <%= i < review.rating ? '' : 'empty' %>">
+                                            <svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <p class="review-card-comment">"<%= review.comment %>"</p>
+                            <div class="review-card-footer">
+                                <span class="review-card-date"><%= new Date(review.createdAt).toLocaleDateString('fr-FR') %></span>
+                            </div>
                         </div>
-                    </div>
-                    <p class="review-card-comment">"<%= review.comment %>"</p>
-                    <div class="review-card-footer">
-                        <span class="review-card-date"><%= new Date(review.createdAt).toLocaleDateString('fr-FR') %></span>
-                    </div>
-                </div>
-            <% }) %>
-        <% } else { %>
-            <p class="no-reviews-message"><%= t('product.noReviews') %></p>
-        <% } %>
-    </div>
+                    <% }) %>
+                <% } else { %>
+                    <p class="no-reviews-message"><%= t('product.noReviews') %></p>
+                <% } %>
+            </div>
 
-    <%- include('partials/pagination', { 
-        currentPage: currentReviewPage, 
-        totalPages: totalReviewPages, 
-        baseUrl: `/produit/${product.id}` 
-    }) %>
+            <%- include('partials/pagination', { 
+                currentPage: currentReviewPage, 
+                totalPages: totalReviewPages, 
+                baseUrl: `/produit/${product.id}` 
+            }) %>
 
-    <div class="review-submission-area">
-        <button id="leave-review-btn" class="btn-product-primary"><%= t('buttons.leaveReview') %></button>
-    </div>
-    <!-- ================= END OF I18N CHANGES ================== -->
-</section>
+            <div class="review-submission-area">
+                <button id="leave-review-btn" class="btn-product-primary"><%= t('buttons.leaveReview') %></button>
+            </div>
+        </section>
     </main>
     
     <%- include('partials/footer') %>
@@ -187,10 +165,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-

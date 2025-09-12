@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+   "start": "node server.js",
+   "test": "echo \"Error: no test specified\" && exit 1",
+   "clean": "rm -rf public/dist",
+   "build:css": "cleancss -o public/dist/style.min.css public/styles/style.css public/styles/products.css public/styles/faq.css public/styles/resultats.css public/styles/account.css public/styles/consent-banner.css public/styles/rtl.css",
+   "build:js": "terser public/functions/script.js public/functions/cart.js public/functions/panier.js public/functions/product.js public/functions/pack.js public/functions/direct-checkout.js public/functions/resultats.js public/functions/faq.js public/functions/consent-banner.js -o public/dist/bundle.min.js -c -m",
+   "build": "npm run clean && mkdir -p public/dist && npm run build:css && npm run build:js"
   },
   "keywords": [],
   "author": "",
@@ -30,5 +34,9 @@
     "multer-storage-cloudinary": "^4.0.0",
     "nodemailer": "^7.0.5",
     "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.44.0"
   }
 }

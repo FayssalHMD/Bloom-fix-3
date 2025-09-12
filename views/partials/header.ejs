@@ -1,5 +1,3 @@
-<!-- views/partials/header.ejs -->
-
 <div class="loader-wrapper">
     <img src="/images/flower_loading.webp" alt="Loading..." class="loader-flower">
 </div>
@@ -12,7 +10,6 @@
 
         <ul class="nav-menu desktop-only">
             <% if (pageType === 'admin') { %>
-                <!-- Admin links remain untranslated for simplicity -->
                 <li><a href="/admin/dashboard" class="nav-link">Tableau de Bord</a></li>
                 <li><a href="/admin/products" class="nav-link">Inventaire</a></li>
                 <li><a href="/admin/faq" class="nav-link">FAQ</a></li>
@@ -30,7 +27,6 @@
         </ul>
 
         <div class="nav-actions">
-            <!-- NEW: Language Dropdown Structure -->
             <div class="lang-dropdown" id="lang-dropdown">
                 <button type="button" class="lang-dropdown-toggle" id="lang-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
                     <svg class="globe-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
@@ -57,9 +53,11 @@
                 <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9.37 5.51C9.19 6.15 9.1 6.82 9.1 7.5c0 4.08 3.32 7.4 7.4 7.4.68 0 1.35-.09 1.99-.27C17.45 17.19 14.93 19 12 19c-3.86 0-7-3.14-7-7 0-2.93 1.81-5.45 4.37-6.49z"></path></svg>
             </button>
             
-            <button id="search-toggle-btn" class="nav-icon-btn" aria-label="Open search">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
-            </button>
+            <% if (pageType === 'home') { %>
+                <button id="search-toggle-btn" class="nav-icon-btn" aria-label="Open search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+                </button>
+            <% } %>
 
             <% if (user) { %>
                 <a href="/compte" class="nav-icon-btn user-account-icon" aria-label="<%= t('nav.myAccount') %>">
@@ -86,6 +84,15 @@
 
     <div class="mobile-nav" id="mobile-menu">
         <div class="mobile-nav-top">
+
+            <!-- ADD THIS NEW CLOSE BUTTON -->
+            <button class="mobile-nav-close-btn" id="mobile-nav-close" aria-label="Close Navigation Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+            <!-- END of new button -->
+
             <ul class="mobile-nav-list">
                 <li><a href="/" class="mobile-nav-link"><%= t('nav.home') %></a></li>
                 <li><a href="/#nos-produits" class="mobile-nav-link"><%= t('nav.products') %></a></li>
@@ -96,6 +103,24 @@
             </ul>
             <hr class="mobile-nav-divider">
             <ul class="mobile-nav-list">
+
+            <!-- START: ADD NEW LANGUAGE SWITCHER FOR MOBILE -->
+                <li>
+                    <% if (lng === 'fr') { %>
+                        <a href="<%= currentUrl.split('?')[0] %>?lang=ar" class="mobile-nav-link mobile-lang-switcher" lang="ar" hreflang="ar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            <span>العربية</span>
+                        </a>
+                    <% } else { %>
+                        <a href="<%= currentUrl.split('?')[0] %>?lang=fr" class="mobile-nav-link mobile-lang-switcher" lang="fr" hreflang="fr">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            <span>Français</span>
+                        </a>
+                    <% } %>
+                </li>
+                <hr class="mobile-nav-divider">
+            <!-- END: ADD NEW LANGUAGE SWITCHER FOR MOBILE -->
+
                  <% if (user) { %>
                     <li>
                         <a href="/compte" class="mobile-nav-link">
@@ -144,7 +169,6 @@
     </div>
  </header>
 
-<!-- NEW: LOGIN/REGISTER PROMPT MODAL -->
 <div id="login-prompt-modal" class="prompt-modal">
     <div class="prompt-modal-content admin-confirm-content">
         <button class="modal-close-btn" id="login-prompt-close-btn">×</button>
@@ -161,6 +185,5 @@
         </div>
     </div>
  </div>
-
 
  <div class="nav-overlay" id="nav-overlay"></div>

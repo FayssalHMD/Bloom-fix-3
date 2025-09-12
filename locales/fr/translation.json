@@ -403,5 +403,8 @@
     "subtitle": "Page Introuvable",
     "description": "Désolé, la page que vous recherchez semble s'être égarée dans la nature. Retournons à un endroit plus familier.",
     "button": "Retour à l'accueil"
+  },
+   "search": {
+    "placeholder": "Rechercher un produit ou un pack..."
   }
 }

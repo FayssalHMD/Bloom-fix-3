@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= pageTitle %> - Bloom</title>
     <link rel="icon" type="image/png" href="/images/title-icon.webp">
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/account.css">
-    <% if (lng === 'ar') { %>
-        <link rel="stylesheet" href="/styles/rtl.css">
-    <% } %>
+    <link rel="stylesheet" href="/dist/style.min.css">
 </head>
 <body class="no-scroll">
 
@@ -64,7 +60,7 @@
                                                 <td data-label="<%= t('account.dashboard.order') %>"><strong>#<%= order._id.toString().slice(-6).toUpperCase() %></strong></td>
                                                 <td data-label="<%= t('account.dashboard.date') %>"><%= new Date(order.createdAt).toLocaleDateString('fr-FR') %></td>
                                                 <td data-label="<%= t('account.dashboard.status') %>"><span class="status-badge status-<%= order.status.toLowerCase() %>"><%= order.status %></span></td>
-                                                <td data-label="<%= t('account.dashboard.total') %>"><%= order.total %></td>
+                                                <td data-label="<%= t('account.dashboard.total') %>"><%= order.total.replace('DA', lng === 'ar' ? 'د.ج' : 'DA') %></td>
                                             </tr>
                                         <% }) %>
                                     </tbody>
@@ -120,61 +116,55 @@
                         </form>
                     </div>
               <% } else if (currentView === 'wishlist') { %>
-    <div class="content-header">
-        <h1><%= t('account.wishlist.title') %></h1>
-        <p><%= t('account.wishlist.subtitle') %></p>
-    </div>
-    <div class="content-body">
-        <%# --- START OF I18N FIX --- %>
-        <%# First, filter the array to only include valid, populated items %>
-        <% const validWishlistItems = wishlistItems.filter(item => item.productId || item.packId); %>
-
-        <%# Now, check the length of the filtered array %>
-        <% if (validWishlistItems.length > 0) { %>
-            <div class="wishlist-grid">
-                <%# Loop over the filtered array %>
-                <% validWishlistItems.forEach(item => { %>
-                    <% if (item.productId) { const product = item.productId; %>
-                        <article class="product-card">
-                            <button class="wishlist-btn active" data-item-id="<%= product._id %>" data-item-type="Product"><svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg></button>
-                            <div class="product-image-wrapper">
-                                <img src="<%= (product.mainImage && product.mainImage.url) ? product.mainImage.url : '/images/placeholder.png' %>" alt="<%= product.name[lng] || product.name.fr %>" class="product-image">
+                    <div class="content-header">
+                        <h1><%= t('account.wishlist.title') %></h1>
+                        <p><%= t('account.wishlist.subtitle') %></p>
+                    </div>
+                    <div class="content-body">
+                        <% const validWishlistItems = wishlistItems.filter(item => item.productId || item.packId); %>
+                        <% if (validWishlistItems.length > 0) { %>
+                            <div class="wishlist-grid">
+                                <% validWishlistItems.forEach(item => { %>
+                                    <% if (item.productId) { const product = item.productId; %>
+                                        <article class="product-card">
+                                            <button class="wishlist-btn active" data-item-id="<%= product._id %>" data-item-type="Product"><svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg></button>
+                                            <div class="product-image-wrapper">
+                                                <img src="<%= (product.mainImage && product.mainImage.url) ? product.mainImage.url : '/images/placeholder.png' %>" alt="<%= product.name[lng] || product.name.fr %>" class="product-image">
+                                            </div>
+                                            <div class="product-card-content">
+                                                <h3><%= product.name[lng] || product.name.fr %></h3>
+                                                <p class="product-description"><%= product.short_description[lng] || product.short_description.fr %></p>
+                                                <span class="product-price"><%= formatPrice(product.price, lng) %></span>
+                                                <a href="/produit/<%= product.id %>" class="product-btn"><%= t('buttons.viewDetails') %></a>
+                                            </div>
+                                        </article>
+                                    <% } else if (item.packId) { const pack = item.packId; %>
+                                        <article class="pack-card">
+                                             <button class="wishlist-btn active" data-item-id="<%= pack._id %>" data-item-type="Pack"><svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg></button>
+                                            <div class="product-image-wrapper">
+                                                <img src="<%= (pack.mainImage && pack.mainImage.url) ? pack.mainImage.url : '/images/placeholder.png' %>" alt="<%= pack.name[lng] || pack.name.fr %>" class="product-image">
+                                            </div>
+                                            <div class="pack-card-content">
+                                                <h3><%= pack.name[lng] || pack.name.fr %></h3>
+                                                <p class="pack-contents"><%= pack.contents[lng] || pack.contents.fr %></p>
+                                                <div class="pack-pricing">
+                                                    <span class="original-price"><%= formatPrice(pack.originalPrice, lng) %></span>
+                                                    <span class="discounted-price"><%= formatPrice(pack.discountedPrice, lng) %></span>
+                                                </div>
+                                                <a href="/packs/<%= pack.id %>" class="product-btn"><%= t('buttons.viewDetails') %></a>
+                                            </div>
+                                        </article>
+                                    <% } %>
+                                <% }) %>
                             </div>
-                            <div class="product-card-content">
-                                <h3><%= product.name[lng] || product.name.fr %></h3>
-                                <p class="product-description"><%= product.short_description[lng] || product.short_description.fr %></p>
-                                <span class="product-price"><%= product.price %> DA</span>
-                                <a href="/produit/<%= product.id %>" class="product-btn"><%= t('buttons.viewDetails') %></a>
+                        <% } else { %>
+                            <div class="no-orders-message">
+                                <p><%= t('account.wishlist.empty') %></p>
+                                <a href="/" class="btn-primary"><%= t('account.wishlist.explore') %></a>
                             </div>
-                        </article>
-                    <% } else if (item.packId) { const pack = item.packId; %>
-                        <article class="pack-card">
-                             <button class="wishlist-btn active" data-item-id="<%= pack._id %>" data-item-type="Pack"><svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg></button>
-                            <div class="product-image-wrapper">
-                                <img src="<%= (pack.mainImage && pack.mainImage.url) ? pack.mainImage.url : '/images/placeholder.png' %>" alt="<%= pack.name[lng] || pack.name.fr %>" class="product-image">
-                            </div>
-                            <div class="pack-card-content">
-                                <h3><%= pack.name[lng] || pack.name.fr %></h3>
-                                <p class="pack-contents"><%= pack.contents[lng] || pack.contents.fr %></p>
-                                <div class="pack-pricing">
-                                    <span class="original-price"><%= pack.originalPrice %> DA</span>
-                                    <span class="discounted-price"><%= pack.discountedPrice %> DA</span>
-                                </div>
-                                <a href="/packs/<%= pack.id %>" class="product-btn"><%= t('buttons.viewDetails') %></a>
-                            </div>
-                        </article>
-                    <% } %>
-                <% }) %>
-            </div>
-        <% } else { %>
-            <div class="no-orders-message">
-                <p><%= t('account.wishlist.empty') %></p>
-                <a href="/" class="btn-primary"><%= t('account.wishlist.explore') %></a>
-            </div>
-        <% } %>
-        <%# --- END OF I18N FIX --- %>
-    </div>
-<% } %>
+                        <% } %>
+                    </div>
+               <% } %>
             </section>
         </div>
     </main>

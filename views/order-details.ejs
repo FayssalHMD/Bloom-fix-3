@@ -4,21 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= pageTitle %> - Bloom</title>
-
-    <!-- ================================================== -->
-    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
-    <!-- ================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <!-- ================================================== -->
-    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
-    <!-- ================================================== -->
-     
     <link rel="icon" type="image/png" href="/images/title-icon.webp">
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/account.css"> <!-- Link the account stylesheet -->
-    
+    <link rel="stylesheet" href="/dist/style.min.css">
 </head>
 <body class="no-scroll">
 
@@ -26,7 +16,6 @@
 
     <main class="account-page">
         <div class="account-container">
-            <!-- Sidebar (same as account.ejs) -->
             <aside class="account-sidebar">
                 <h2 class="sidebar-title"><%= t('account.sidebar.title') %></h2>
                 <nav class="account-nav">
@@ -45,7 +34,6 @@
                 </nav>
             </aside>
 
-            <!-- Main Content -->
             <section class="account-content">
                 <div class="content-header order-details-header">
                     <a href="/compte" class="back-to-orders-link">← <%= t('account.orderDetails.backToOrders') %></a>
@@ -53,23 +41,19 @@
                     <p><%= t('account.orderDetails.subtitle', { id: order._id.toString().slice(-6).toUpperCase(), date: new Date(order.createdAt).toLocaleDateString('fr-FR') }) %></p>
                 </div>
 
-               <!-- ================================================== -->
-                <!--     REPLACE THE ENTIRE order-items-section DIV     -->
-                <!-- ================================================== -->
                 <div class="order-items-section">
                     <% order.items.forEach(item => { %>
                         <div class="order-details-item">
-                            <img src="<%= item.image %>" alt="<%= item.name %>" class="order-item-image">
+                            <img src="<%= (item.image && item.image.url) ? item.image.url : item.image %>" alt="<%= item.name[lng] || item.name.fr %>" class="order-item-image">
                             <div class="order-item-info">
                                 <div class="item-name-price">
                                     <span class="item-name"><%= item.name[lng] || item.name.fr %></span>
-                                    <span class="item-price"><%= item.price.toFixed(2) %> DA</span>
+                                    <span class="item-price"><%= formatPrice(item.price, lng) %></span>
                                 </div>
                                 <div class="item-qty">
                                     <span><%= t('account.orderDetails.quantity') %>: <%= item.quantity %></span>
                                 </div>
                                 
-                                <!-- NEW: "Leave a Review" Button -->
                                 <% if (item.productId && !item.isPack) { %>
                                     <div class="item-review-action">
                                         <a href="/produit/<%= item.productId.id %>#product-reviews-section" class="btn-leave-review">
@@ -82,23 +66,21 @@
                         </div>
                     <% }) %>
                 </div>
-                <!-- ================================================== -->
 
-                    <!-- Right Column: Summary & Address -->
                     <div class="order-summary-section">
                         <div class="summary-card">
                               <h3><%= t('account.orderDetails.summary') %></h3>
                             <div class="summary-row">
                                 <span><%= t('account.orderDetails.subtotal') %></span>
-                                <span><%= order.subtotal.toFixed(2) %> DA</span>
+                                <span><%= formatPrice(order.subtotal, lng) %></span>
                             </div>
                             <div class="summary-row">
                                 <span><%= t('account.orderDetails.shipping') %></span>
-                                <span><%= order.shipping.toFixed(2) %> DA</span>
+                                <span><%= formatPrice(order.shipping, lng) %></span>
                             </div>
                             <div class="summary-total">
                                 <span><%= t('account.dashboard.total') %></span>
-                                <span><%= order.total %></span>
+                                <span><%= order.total.replace('DA', lng === 'ar' ? 'د.ج' : 'DA') %></span>
                             </div>
                         </div>
                         <div class="summary-card">

@@ -4,21 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= pageTitle %></title>
-
-    <!-- ================================================== -->
-    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
-    <!-- ================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <!-- ================================================== -->
-    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
-    <!-- ================================================== -->
-
-    
     <link rel="icon" type="image/png" href="/images/title-icon.webp">
-    <link rel="stylesheet" href="/styles/style.css">
-    
+    <link rel="stylesheet" href="/dist/style.min.css">
 </head>
 <body>
     <%- include('partials/header', { t: t, lng: lng, pageType: pageType, currentUrl: currentUrl, user: user }) %>

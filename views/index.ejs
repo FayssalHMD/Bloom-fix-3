@@ -1,46 +1,23 @@
 <!DOCTYPE html>
-<!-- ================= START OF I18N CHANGES ================ -->
 <html lang="<%= lng %>" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
-<!-- ================= END OF I18N CHANGES ================== -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= pageTitle %></title>
     <meta name="description" content="<%= metaDescription %>">
     <link rel="icon" type="image/png" href="/images/title-icon.webp">
-    <link rel="stylesheet" href="/styles/style.css">
-
-    <!-- ================================================== -->
-    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
-    <!-- ================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <!-- ================================================== -->
-    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
-    <!-- ================================================== -->
-
-
-    <!-- ================================================== -->
-    <!--        START: ADD SWIPERJS LIBRARY (CSS & JS)      -->
-    <!-- ================================================== -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- ================================================== -->
-    <!--         END: ADD SWIPERJS LIBRARY (CSS & JS)       -->
-    <!-- ================================================== -->
-
+    <link rel="stylesheet" href="/dist/style.min.css">
 </head>
 <body class="no-scroll">
 
-     <!-- ================= START OF I18N CHANGES ================ -->
     <%- include('partials/header', { t: t, lng: lng, pageType: pageType, currentUrl: currentUrl, user: user }) %>
-    <!-- ================= END OF I18N CHANGES ================== -->
 
     <main>
-        <!-- ================================================== -->
-        <!--                 HERO SECTION                       -->
-        <!-- ================================================== -->
         <section class="hero-section" id="hero-section" role="img" aria-label="Flacon d'huile Bloom posé devant un vase de fleurs">
             <div class="hero-content">
                 <h1 class="hero-title"><%= t('home.heroTitle') %></h1>
@@ -49,9 +26,6 @@
             </div>
         </section>
 
-        <!-- ================================================== -->
-        <!--                 COMMITMENT SECTION                 -->
-        <!-- ================================================== -->
         <section class="commitment-section" id="commitment-section">
             <div class="commitment-container">
                 <div class="commitment-image">
@@ -65,9 +39,6 @@
             </div>
         </section>
 
-       <!-- ================================================== -->
-        <!--       PRODUCTS SECTION ("Nos Incontournables")     -->
-        <!-- ================================================== -->
          <section class="product-showcase-section" id="nos-produits">
                 <div class="showcase-container">
                     <h2 class="showcase-title"><%= t('home.featuredProducts') %></h2>
@@ -101,9 +72,6 @@
                 </div>
             </section>
 
-                <!-- ================================================== -->
-                <!--          START OF PACKS SECTION I18N CHANGES         -->
-                <!-- ================================================== -->
                 <section class="packs-section" id="packs">
                     <div class="showcase-container">
                         <h2 class="showcase-title"><%= t('home.featuredPacks') %></h2>
@@ -139,13 +107,7 @@
                         <a href="/boutique#packs-section" class="view-all-link"><%= t('buttons.viewAllPacks') %> →</a>
                     </div>
                 </section>
-                <!-- ================================================== -->
-                <!--           END OF PACKS SECTION I18N CHANGES          -->
-                <!-- ================================================== -->
 
-         <!-- ================================================== -->
-        <!--             DELIVERY & PAYMENT SECTION             -->
-        <!-- ================================================== -->
         <section class="delivery-info-section">
             <div class="delivery-info-container">
                 <div class="info-box">
@@ -166,10 +128,6 @@
             </div>
         </section>
 
-
-         <!-- ================================================== -->
-        <!--                 TESTIMONIALS SECTION               -->
-        <!-- ================================================== -->
         <section class="testimonials-section">
             <h2 class="showcase-title"><%= t('home.testimonialsTitle') %></h2>
             <div class="perspective-carousel">
@@ -194,9 +152,6 @@
             </div>
         </section>
 
-        <!-- ================================================== -->
-        <!--                 FINAL CTA SECTION                  -->
-        <!-- ================================================== -->
         <section class="final-invitation-section">
             <div class="invitation-card">
                 <img src="/images/CTA-image.webp" alt="Texture de sérum Bloom sur la peau" class="invitation-image">

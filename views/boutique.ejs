@@ -3,23 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title><%= pageTitle %></title>
+    <title><%= pageTitle %></title>
     <meta name="description" content="<%= metaDescription %>">
-
-    <!-- ================================================== -->
-    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
-    <!-- ================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <!-- ================================================== -->
-    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
-    <!-- ================================================== -->
-
-    
     <link rel="icon" type="image/png" href="/images/title-icon.webp">
-    <link rel="stylesheet" href="/styles/style.css">
-    
+    <link rel="stylesheet" href="/dist/style.min.css">
 </head>
 <body>
     <%- include('partials/header', { t: t, lng: lng, pageType: pageType, currentUrl: currentUrl, user: user }) %>
@@ -28,7 +18,6 @@
          <div class="showcase-container">
             <h1 class="showcase-title"><%= t('boutique.title') %></h1>
 
-            <!-- Products Section -->
             <section class="product-grid-section" id="products-section">
                 <h2 class="grid-section-title"><%= t('boutique.productsTitle') %></h2>
                 <div class="boutique-grid">
@@ -55,7 +44,6 @@
                 </div>
             </section>
 
-            <!-- Packs Section -->
             <section class="pack-grid-section" id="packs-section">
                 <h2 class="grid-section-title"><%= t('boutique.packsTitle') %></h2>
                 <div class="boutique-grid">

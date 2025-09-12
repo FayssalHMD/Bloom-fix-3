@@ -4,21 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= t('auth.registerTitle') %> - Bloom</title>
-
-    <!-- ================================================== -->
-    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
-    <!-- ================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <!-- ================================================== -->
-    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
-    <!-- ================================================== -->
-
-    
     <link rel="icon" type="image/png" href="/images/title-icon.webp">
-    <link rel="stylesheet" href="/styles/style.css">
-    
+    <link rel="stylesheet" href="/dist/style.min.css">
 </head>
 <body class="no-scroll">
 
@@ -37,7 +27,6 @@
                     <ul><% allErrors.forEach(errorMsg => { %><li><%= errorMsg %></li><% }) %></ul>
                 </div>
             <% } %>
-            <!-- MODIFICATION END -->
 
             <form action="/register" method="POST" class="auth-form">
                 
@@ -89,7 +78,5 @@
     </main>
 
     <%- include('partials/footer') %>
-
-
 </body>
 </html>
