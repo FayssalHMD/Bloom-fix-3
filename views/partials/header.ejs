@@ -84,15 +84,11 @@
 
     <div class="mobile-nav" id="mobile-menu">
         <div class="mobile-nav-top">
-
-            <!-- ADD THIS NEW CLOSE BUTTON -->
             <button class="mobile-nav-close-btn" id="mobile-nav-close" aria-label="Close Navigation Menu">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
                 </svg>
             </button>
-            <!-- END of new button -->
-
             <ul class="mobile-nav-list">
                 <li><a href="/" class="mobile-nav-link"><%= t('nav.home') %></a></li>
                 <li><a href="/#nos-produits" class="mobile-nav-link"><%= t('nav.products') %></a></li>
@@ -103,8 +99,6 @@
             </ul>
             <hr class="mobile-nav-divider">
             <ul class="mobile-nav-list">
-
-            <!-- START: ADD NEW LANGUAGE SWITCHER FOR MOBILE -->
                 <li>
                     <% if (lng === 'fr') { %>
                         <a href="<%= currentUrl.split('?')[0] %>?lang=ar" class="mobile-nav-link mobile-lang-switcher" lang="ar" hreflang="ar">
@@ -119,8 +113,6 @@
                     <% } %>
                 </li>
                 <hr class="mobile-nav-divider">
-            <!-- END: ADD NEW LANGUAGE SWITCHER FOR MOBILE -->
-
                  <% if (user) { %>
                     <li>
                         <a href="/compte" class="mobile-nav-link">

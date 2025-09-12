@@ -1251,10 +1251,11 @@ ul {
 
 .perspective-carousel {
     position: relative;
-    height: 400px; /* Increased height */
+    height: 400px; /* <-- THIS IS THE FIX */
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .carousel-cards {
@@ -4582,4 +4583,13 @@ ul {
     padding: 12px 30px;
     font-size: 1rem;
     border-radius: 50px;
+
 }
+
+
+
+
+
+
+
+
