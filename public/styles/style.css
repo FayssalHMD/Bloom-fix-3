@@ -1535,21 +1535,30 @@ ul {
 }
 
 
+/* In public/styles/style.css, REPLACE the entire @media (max-width: 1024px) block */
+
 @media (max-width: 1024px) {
-    /* CORRECTED RULE */
-.nav-menu.desktop-only,
-.nav-actions .user-account-icon,
-.nav-actions .cart-icon,
-.nav-actions #search-toggle-btn, /* Also hide the search icon */
-.nav-actions #theme-toggle-btn { /* And hide the desktop theme toggler */
+    .navigation-bar {
+        justify-content: space-between;
+    }
+
+    .nav-menu.desktop-only,
+    .nav-actions {
         display: none;
     }
-    .nav-actions {
-        gap: 0;
-    }
+
     .hamburger-menu {
         display: block;
     }
+
+    .navigation-logo {
+        width: 10rem; /* Make logo smaller on mobile */
+    }
+
+    .nav-actions {
+        gap: 0;
+    }
+    
     .navigation-bar {
         padding: 0 1rem;
     }
@@ -1670,12 +1679,17 @@ ul {
         padding: 10vh 10px;
     }
     .perspective-carousel {
-        height: 400px;
+        height: auto; /* Let height be flexible */
+        min-height: 420px; /* Set a minimum height */
     }
     .testimonial-card {
         width: 85%;
         max-width: 350px;
         padding: 25px;
+        height: auto; /* Let height be flexible */
+        min-height: 380px; /* Set a minimum height */
+        justify-content: flex-start;
+        overflow-y: auto;
     }
     .testimonial-card.prev {
         transform: translateX(-110%) scale(1);
@@ -4510,6 +4524,7 @@ ul {
     border-radius: 50px;
 
 }
+
 
 
 
