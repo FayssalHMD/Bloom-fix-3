@@ -352,3 +352,37 @@
         grid-template-columns: 1fr; /* Stack columns on smaller screens */
     }
 }
+
+/* ================================================== */
+/*   ADMIN MOBILE NAVIGATION FIXES & STYLES           */
+/* ================================================== */
+
+/* Hide hamburger when menu is open */
+.hamburger-menu.active {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Style for the new close button inside the sidebar */
+.mobile-nav-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 10px;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav-close-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+.mobile-nav-close-btn:hover {
+    transform: rotate(90deg);
+}

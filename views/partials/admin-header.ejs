@@ -2,29 +2,20 @@
     <img src="/images/flower_loading.webp" alt="Loading..." class="loader-flower">
 </div>
 
- <header class="header-section" id="header">
+<header class="header-section" id="header">
     <nav class="navigation-bar" aria-label="Main Navigation">
         <a href="/" class="nav-logo-link">
             <img src="/images/bloom-logo.webp" alt="Bloom Home" class="navigation-logo">
         </a>
 
-<ul class="nav-menu desktop-only">
-    <% if (pageType === 'admin') { %>
-        <li><a href="/admin/dashboard" class="nav-link">Tableau de Bord</a></li>
-        <li><a href="/admin/products" class="nav-link">Inventaire</a></li>
-        <li><a href="/admin/faq" class="nav-link">FAQ</a></li>
-        <li><a href="/admin/testimonials" class="nav-link">Témoignages</a></li>
-        <li><a href="/admin/reviews" class="nav-link">Avis</a></li>
-        <li><a href="/admin/messages" class="nav-link">Messages</a></li>
-    <% } else { %>
-        <li><a href="/" class="nav-link">Accueil</a></li>
-        <li><a href="/#nos-produits" class="nav-link">Produits</a></li>
-        <li><a href="/#packs" class="nav-link">Packs</a></li>
-        <li><a href="/resultats" class="nav-link">Nos Résultats</a></li>
-        <li><a href="/faq" class="nav-link">FAQ</a></li>
-        <li><a href="/contact" class="nav-link">Contact</a></li>
-    <% } %>
-</ul>
+        <ul class="nav-menu desktop-only">
+            <li><a href="/admin/dashboard" class="nav-link">Tableau de Bord</a></li>
+            <li><a href="/admin/products" class="nav-link">Inventaire</a></li>
+            <li><a href="/admin/faq" class="nav-link">FAQ</a></li>
+            <li><a href="/admin/testimonials" class="nav-link">Témoignages</a></li>
+            <li><a href="/admin/reviews" class="nav-link">Avis</a></li>
+            <li><a href="/admin/messages" class="nav-link">Messages</a></li>
+        </ul>
 
         <div class="nav-actions">
              <button id="theme-toggle-btn" class="nav-icon-btn" aria-label="Toggle theme">
@@ -42,23 +33,21 @@
 
     <div class="mobile-nav" id="mobile-menu">
         <div class="mobile-nav-top">
-<ul class="mobile-nav-list">
-    <% if (pageType === 'admin') { %>
-        <li><a href="/admin/dashboard" class="mobile-nav-link">Tableau de Bord</a></li>
-        <li><a href="/admin/products" class="mobile-nav-link">Inventaire</a></li>
-        <li><a href="/admin/faq" class="mobile-nav-link">FAQ</a></li>
-        <li><a href="/admin/testimonials" class="mobile-nav-link">Témoignages</a></li>
-        <li><a href="/admin/reviews" class="mobile-nav-link">Avis</a></li>
-        <li><a href="/admin/messages" class="mobile-nav-link">Messages</a></li>
-    <% } else { %>
-        <li><a href="/" class="mobile-nav-link">Accueil</a></li>
-        <li><a href="/#nos-produits" class="mobile-nav-link">Produits</a></li>
-        <li><a href="/#packs" class="mobile-nav-link">Packs</a></li>
-        <li><a href="/resultats" class="mobile-nav-link">Nos Résultats</a></li>
-        <li><a href="/faq" class="mobile-nav-link">FAQ</a></li>
-        <li><a href="/contact" class="mobile-nav-link">Contact</a></li>
-    <% } %>
-</ul>       
+            <button class="mobile-nav-close-btn" id="mobile-nav-close" aria-label="Close Navigation Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+            <ul class="mobile-nav-list">
+                <li><a href="/admin/dashboard" class="mobile-nav-link">Tableau de Bord</a></li>
+                <li><a href="/admin/products" class="mobile-nav-link">Inventaire</a></li>
+                <li><a href="/admin/faq" class="mobile-nav-link">FAQ</a></li>
+                <li><a href="/admin/testimonials" class="mobile-nav-link">Témoignages</a></li>
+                <li><a href="/admin/reviews" class="mobile-nav-link">Avis</a></li>
+                <li><a href="/admin/messages" class="mobile-nav-link">Messages</a></li>
+                <hr class="mobile-nav-divider">
+                <li><a href="/admin/logout" class="mobile-nav-link">Se déconnecter</a></li>
+            </ul>
         </div>
         <div class="mobile-nav-bottom">
             <div class="mobile-theme-switcher">
@@ -71,23 +60,23 @@
             </div>
         </div>
     </div>
- </header>
+</header>
 
-<% if (messages && (messages.success || messages.error)) { %>
+<% if (locals.messages && (locals.messages.success || locals.messages.error)) { %>
     <div class="flash-messages-container">
-    <% if (messages.success) { %>
+    <% if (locals.messages.success) { %>
         <div class="flash-message flash-success">
-            <span><%= messages.success %></span>
+            <span><%= locals.messages.success %></span>
             <button class="flash-close-btn">×</button>
         </div>
     <% } %>
-    <% if (messages.error) { %>
+    <% if (locals.messages.error) { %>
         <div class="flash-message flash-error">
-            <span><%= messages.error %></span>
+            <span><%= locals.messages.error %></span>
             <button class="flash-close-btn">×</button>
         </div>
     <% } %>
 </div>
 <% } %>
 
- <div class="nav-overlay" id="nav-overlay"></div>
+<div class="nav-overlay" id="nav-overlay"></div>
