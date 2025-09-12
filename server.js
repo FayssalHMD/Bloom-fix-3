@@ -73,6 +73,82 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
+const seoStrings = {
+    fr: {
+        home: {
+            title: "Bloom - Soins Naturels pour une Peau Radieuse",
+            description: "Découvrez Bloom, votre nouvelle routine de soins naturels. Nos huiles et crèmes exclusives nourrissent votre peau, la laissant douce, nette et lumineuse. Rejoignez notre communauté."
+        },
+        boutique: {
+            title: "Notre Collection Complète - Bloom",
+            description: "Explorez toute la gamme de produits Bloom. Trouvez des soins naturels, des huiles nourrissantes et des packs exclusifs pour une peau visiblement plus saine."
+        },
+        product: {
+            title: "{{productName}} - Bloom",
+            description: "{{productDescription}}"
+        },
+        pack: {
+            title: "{{packName}} - Bloom",
+            description: "{{packDescription}}"
+        },
+        resultats: {
+            title: "Nos Résultats - Témoignages Clients | Bloom",
+            description: "Voyez les transformations réelles de nos clientes. Découvrez les résultats avant/après et lisez les témoignages sur l'efficacité des soins Bloom."
+        },
+        faq: {
+            title: "Questions Fréquemment Posées - Bloom",
+            description: "Trouvez les réponses à toutes vos questions sur les produits Bloom, la livraison, le paiement et les conseils d'utilisation. Notre FAQ est là pour vous aider."
+        },
+        contact: {
+            title: "Contactez-nous - Bloom",
+            description: "Vous avez une question ? Contactez l'équipe Bloom. Nous sommes là pour vous aider avec vos commandes, nos produits ou toute autre demande."
+        }
+    },
+    ar: {
+        home: {
+            title: "بلوم - عناية طبيعية لبشرة مشرقة",
+            description: "اكتشفي بلوم، روتينك الجديد للعناية الطبيعية بالبشرة. زيوتنا وكريماتنا الحصرية تغذي بشرتك، لتتركها ناعمة، صافية ومشرقة. انضمي إلى مجتمعنا."
+        },
+        boutique: {
+            title: "مجموعتنا الكاملة - بلوم",
+            description: "استكشفي مجموعة منتجات بلوم الكاملة. اعثري على علاجات طبيعية، زيوت مغذية وباقات حصرية لبشرة أكثر صحة بشكل واضح."
+        },
+        product: {
+            title: "{{productName}} - بلوم",
+            description: "{{productDescription}}"
+        },
+        pack: {
+            title: "{{packName}} - بلوم",
+            description: "{{packDescription}}"
+        },
+        resultats: {
+            title: "نتائجنا - شهادات العملاء | بلوم",
+            description: "شاهدي التحولات الحقيقية لعملائنا. اكتشفي نتائج قبل/بعد واقرئي الشهادات حول فعالية علاجات بلوم."
+        },
+        faq: {
+            title: "الأسئلة الشائعة - بلوم",
+            description: "اعثري على إجابات لجميع أسئلتك حول منتجات بلوم، التوصيل، الدفع ونصائح الاستخدام. قسم الأسئلة الشائعة هنا لمساعدتك."
+        },
+        contact: {
+            title: "اتصل بنا - بلوم",
+            description: "لديك سؤال؟ اتصلي بفريق بلوم. نحن هنا لمساعدتك في طلباتك، منتجاتنا أو أي استفسار آخر."
+        }
+    }
+};
+
+// ==================================================
+//           PERFORMANCE CACHE IMPLEMENTATION
+// ==================================================
+const appCache = {
+    products: null,
+    packs: null,
+    lastCacheTime: null
+};
+
+const CACHE_DURATION_MS = 5 * 60 * 1000; // 5 minutes
+// ==================================================
+
+
 // ==================================================
 //                 START OF I18N CHANGES
 // ==================================================
@@ -723,12 +799,29 @@ app.delete('/api/admin/reviews/:productId/:reviewId', authMiddleware, async (req
 
 app.get('/', async (req, res) => {
   try {
-    const products = await Product.find({});
-    const packs = await Pack.find({});
+     const now = Date.now();
+    // Check if cache is valid
+    if (!appCache.products || !appCache.packs || (now - appCache.lastCacheTime > CACHE_DURATION_MS)) {
+        console.log('Cache is stale or empty. Fetching from DB...');
+        const productsPromise = Product.find({});
+        const packsPromise = Pack.find({});
+        const [products, packs] = await Promise.all([productsPromise, packsPromise]);
+        
+        // Update cache
+        appCache.products = products;
+        appCache.packs = packs;
+        appCache.lastCacheTime = now;
+    } else {
+        console.log('Serving fresh data from cache.');
+    }
+
+    const pageTitle = seoStrings[req.language].home.title;
+    const metaDescription = seoStrings[req.language].home.description;
     res.render('index', {
-      pageTitle: 'Bloom - Douce au Naturelle',
-      products: products,
-      packs: packs,
+      pageTitle, 
+      metaDescription, 
+      products: appCache.products, 
+      packs: appCache.packs,      
       pageType: 'home',
     });
   } catch (error) {
@@ -739,15 +832,29 @@ app.get('/', async (req, res) => {
 
 app.get('/boutique', async (req, res) => {
   try {
-    const [products, packs] = await Promise.all([
-      Product.find({}).sort({ createdAt: -1 }),
-      Pack.find({}).sort({ createdAt: -1 }),
-    ]);
+    const now = Date.now();
+    // Check if cache is valid
+    if (!appCache.products || !appCache.packs || (now - appCache.lastCacheTime > CACHE_DURATION_MS)) {
+        console.log('Cache is stale or empty. Fetching from DB...');
+        const productsPromise = Product.find({}).sort({ createdAt: -1 });
+        const packsPromise = Pack.find({}).sort({ createdAt: -1 });
+        const [products, packs] = await Promise.all([productsPromise, packsPromise]);
+        
+        // Update cache
+        appCache.products = products;
+        appCache.packs = packs;
+        appCache.lastCacheTime = now;
+    } else {
+        console.log('Serving fresh data from cache.');
+    }
+    const pageTitle = seoStrings[req.language].boutique.title;
+    const metaDescription = seoStrings[req.language].boutique.description;
     res.render('boutique', {
-      pageTitle: 'Notre Collection Complète - Bloom',
+      pageTitle,
+      metaDescription,
       pageType: 'boutique',
-      products: products,
-      packs: packs,
+       products: appCache.products,
+      packs: appCache.packs,     
     });
   } catch (error) {
     console.error('Error fetching data for boutique page:', error);
@@ -768,6 +875,11 @@ app.get('/produit/:id', async (req, res) => {
     if (!product) {
       return res.status(404).send('Product not found');
     }
+    const pageTitle = seoStrings[req.language].product.title
+        .replace('{{productName}}', product.name[req.language] || product.name.fr);
+    const metaDescription = seoStrings[req.language].product.description
+        .replace('{{productDescription}}', product.short_description[req.language] || product.short_description.fr);
+
     const paginatedReviewsResult = await Product.findOne(
       { id: productSlug },
       {
@@ -780,7 +892,8 @@ app.get('/produit/:id', async (req, res) => {
     const totalReviews = product.reviews.length;
     const totalReviewPages = Math.ceil(totalReviews / reviewsLimit);
     res.render('product', {
-      pageTitle: product.name,
+      pageTitle,
+      metaDescription,
       product: product,
       reviews: paginatedReviewsResult.reviews,
       pageType: 'product',
@@ -798,8 +911,16 @@ app.get('/packs/:id', async (req, res) => {
   try {
     const pack = await Pack.findOne({ id: req.params.id });
     if (pack) {
+
+      const pageTitle = seoStrings[req.language].pack.title
+          .replace('{{packName}}', pack.name[req.language] || pack.name.fr);
+      const metaDescription = seoStrings[req.language].pack.description
+          .replace('{{packDescription}}', pack.contents[req.language] || pack.contents.fr);
+
+
       res.render('pack', {
-        pageTitle: pack.name,
+        pageTitle,
+        metaDescription,
         pack: pack,
         pageType: 'product',
       });
@@ -820,8 +941,12 @@ app.get('/panier', (req, res) => {
 });
 
 app.get('/contact', (req, res) => {
+    const pageTitle = seoStrings[req.language].contact.title;
+    const metaDescription = seoStrings[req.language].contact.description;
+
   res.render('contact', {
-    pageTitle: 'Contactez-nous - Bloom',
+    pageTitle,
+    metaDescription,
     pageType: 'contact',
     errors: [],
     successMessage: null,
@@ -925,8 +1050,13 @@ app.get('/resultats', async (req, res) => {
       .sort({ createdAt: -1 });
     const beforeAfters = testimonials.filter((t) => t.type === 'before-after');
     const instagrams = testimonials.filter((t) => t.type === 'instagram');
+
+    const pageTitle = seoStrings[req.language].resultats.title;
+    const metaDescription = seoStrings[req.language].resultats.description;
+
     res.render('resultats', {
-      pageTitle: 'Nos Résultats - Bloom',
+      pageTitle,
+      metaDescription,
       pageType: 'results',
       beforeAfters: beforeAfters,
       instagrams: instagrams,
@@ -945,8 +1075,13 @@ app.get('/faq', async (req, res) => {
     try {
         const categories = await FAQCategory.find({}).sort({ name: 1 });
         const faqItems = await FAQItem.find({}).populate('category').sort({ 'category.name': 1, sortOrder: 1 });
+
+        const pageTitle = seoStrings[req.language].faq.title;
+        const metaDescription = seoStrings[req.language].faq.description;
+
         res.render('faq', {
-            pageTitle: 'Questions Fréquemment Posées - Bloom',
+            pageTitle,
+            metaDescription,
             pageType: 'faq', // We'll use this for loading specific JS/CSS
             categories,
             faqItems

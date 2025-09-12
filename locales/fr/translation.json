@@ -397,5 +397,11 @@
       "shipping": "Livraison",
       "shippingAddress": "Adresse de livraison"
     }
+  },
+  "404": {
+    "title": "Page Introuvable",
+    "subtitle": "Page Introuvable",
+    "description": "Désolé, la page que vous recherchez semble s'être égarée dans la nature. Retournons à un endroit plus familier.",
+    "button": "Retour à l'accueil"
   }
 }
