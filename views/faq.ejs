@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- ================= START OF I18N CHANGES ================ -->
+<html lang="<%= lng %>" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+<!-- ================= END OF I18N CHANGES ================== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+
+    <!-- ================================================== -->
+    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
+    <!-- ================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <!-- ================================================== -->
+    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
+    <!-- ================================================== -->
+
+    
+    <link rel="icon" type="image/png" href="/images/title-icon.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/faq.css">
+    
+</head>
+<body>
+    <!-- ================= START OF I18N CHANGES ================ -->
+    <%- include('partials/header', { t: t, lng: lng, pageType: pageType, currentUrl: currentUrl, user: user }) %>
+    <!-- ================= END OF I18N CHANGES ================== -->
+
+    <main class="faq-page">
+        <section class="faq-hero">
+            <div class="faq-container">
+                <!-- ================= START OF I18N CHANGES ================ -->
+                <h1><%= t('faq.heroTitle') %></h1>
+                <div class="faq-search-wrapper">
+                    <input type="text" id="faq-search-input" placeholder="<%= t('faq.searchPlaceholder') %>">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+                </div>
+                <!-- ================= END OF I18N CHANGES ================== -->
+            </div>
+        </section>
+
+        <section class="faq-content-section">
+            <div class="faq-container">
+                <% if(categories && categories.length > 0) { %>
+                    <div class="faq-categories">
+                        <!-- ================= START OF I18N CHANGES ================ -->
+                        <button class="category-tab active" data-category="all"><%= t('faq.allCategories') %></button>
+                        <% categories.forEach(category => { %>
+                            <button class="category-tab" data-category="<%= category.name.fr.toLowerCase().replace(/\s+/g, '-') %>"><%= category.name[lng] || category.name.fr %></button>
+                        <% }) %>
+                        <!-- ================= END OF I18N CHANGES ================== -->
+                    </div>
+                <% } %>
+
+                <div class="faq-accordion">
+                    <% if(faqItems && faqItems.length > 0) { %>
+                        <% faqItems.forEach(item => { %>
+                            <!-- ================= START OF I18N CHANGES ================ -->
+                            <div class="faq-item" data-category="<%= item.category.name.fr.toLowerCase().replace(/\s+/g, '-') %>">
+                                <button class="faq-question">
+                                    <span><%= item.question[lng] || item.question.fr %></span>
+                                    <span class="faq-icon">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p><%- (item.answer[lng] || item.answer.fr).replace(/\n/g, '<br>') %></p>
+                                </div>
+                            </div>
+                            <!-- ================= END OF I18N CHANGES ================== -->
+                        <% }) %>
+                    <% } else { %>
+                        <p class="faq-empty-message"><%= t('faq.noQuestionsYet') %></p>
+                    <% } %>
+                    <div id="faq-no-results" class="faq-empty-message" style="display: none;">
+                        <!-- ================= START OF I18N CHANGES ================ -->
+                        <h3><%= t('faq.noResultsTitle') %></h3>
+                        <p><%= t('faq.noResultsSubtitle') %></p>
+                        <!-- ================= END OF I18N CHANGES ================== -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-cta-section">
+            <div class="faq-container">
+                <div class="cta-box">
+                    <!-- ================= START OF I18N CHANGES ================ -->
+                    <h3><%= t('faq.ctaTitle') %></h3>
+                    <p><%= t('faq.ctaSubtitle') %></p>
+                    <a href="/contact" class="btn-primary"><%= t('buttons.contactUs') %></a>
+                    <!-- ================= END OF I18N CHANGES ================== -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

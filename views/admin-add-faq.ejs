@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %> - Bloom Admin</title>
+    <link rel="icon" type="image/png" href="/images/title-icon.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/admin.css">
+    <link rel="stylesheet" href="/styles/admin-form.css">
+</head>
+<body>
+    <%- include('partials/admin-header') %>
+    <main class="admin-main">
+        <form action="/admin/faq/add" method="POST" class="admin-form-container wide-form">
+            <div class="admin-form-header">
+                <h1 class="admin-form-title"><%= pageTitle %></h1>
+                <a href="/admin/faq" class="admin-btn-cancel">Annuler</a>
+            </div>
+
+            <% if (errors.length > 0) { %>
+                <div class="admin-error-banner">
+                    <strong>Erreur de validation :</strong>
+                    <ul>
+                        <% errors.forEach(error => { %>
+                            <li><%= error.msg %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <!-- ================================================== -->
+            <!--                 START OF I18N CHANGES                -->
+            <!-- ================================================== -->
+            <div class="lang-tabs">
+                <div class="tab active" data-lang="fr">Français</div>
+                <div class="tab" data-lang="ar">العربية</div>
+            </div>
+
+            <!-- French Panel -->
+            <div id="panel-fr" class="lang-panel active">
+                <div class="form-group">
+                    <label for="question-fr">Question (FR)</label>
+                    <input type="text" id="question-fr" name="question[fr]" value="<%= oldInput.question?.fr || '' %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="answer-fr">Réponse (FR)</label>
+                    <textarea id="answer-fr" name="answer[fr]" rows="8" required><%= oldInput.answer?.fr || '' %></textarea>
+                </div>
+            </div>
+
+            <!-- Arabic Panel -->
+            <div id="panel-ar" class="lang-panel">
+                <div class="form-group">
+                    <label for="question-ar">السؤال (AR)</label>
+                    <input type="text" id="question-ar" name="question[ar]" value="<%= oldInput.question?.ar || '' %>" required dir="rtl">
+                </div>
+                <div class="form-group">
+                    <label for="answer-ar">الإجابة (AR)</label>
+                    <textarea id="answer-ar" name="answer[ar]" rows="8" required dir="rtl"><%= oldInput.answer?.ar || '' %></textarea>
+                </div>
+            </div>
+            <!-- ================================================== -->
+            <!--                  END OF I18N CHANGES                 -->
+            <!-- ================================================== -->
+
+            <div class="form-group">
+                <label for="category">Catégorie</label>
+                <select id="category" name="category" required class="composer-panel-select">
+                    <option value="" disabled <%= !oldInput.category ? 'selected' : '' %>>-- Choisir une catégorie --</option>
+                    <% categories.forEach(cat => { %>
+                        <option value="<%= cat._id %>" <%= (oldInput.category && oldInput.category.toString() === cat._id.toString()) ? 'selected' : '' %>>
+                            <%= cat.name.fr %>
+                        </option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Enregistrer la Question</button>
+            </div>
+        </form>
+    </main>
+    <%- include('partials/footer') %>
+    <script nonce="<%= nonce %>" src="/functions/admin.js"></script>
+</body>
+</html>

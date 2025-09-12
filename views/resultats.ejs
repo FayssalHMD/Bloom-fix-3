@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="<%= lng %>" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+
+    <!-- ================================================== -->
+    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
+    <!-- ================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <!-- ================================================== -->
+    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
+    <!-- ================================================== -->
+     
+    <link rel="icon" type="image/png" href="/images/title-icon.png">
+     
+    <link rel="stylesheet" href="/styles/style.css">
+    <!-- We will create this new CSS file next -->
+    <link rel="stylesheet" href="/styles/resultats.css"> 
+    
+</head>
+<body>
+     <!-- ================= START OF I18N CHANGES ================ -->
+    <%- include('partials/header', { t: t, lng: lng, pageType: pageType, currentUrl: currentUrl, user: user }) %>
+    <!-- ================= END OF I18N CHANGES ================== -->
+
+    <main class="results-page">
+        <!-- Hero Section -->
+        <section class="results-hero">
+            <div class="results-hero-content">
+                <!-- ================= START OF I18N CHANGES ================ -->
+                <h1><%= t('results.heroTitle') %></h1>
+                <p><%= t('results.heroSubtitle') %></p>
+                <!-- ================= END OF I18N CHANGES ================== -->
+            </div>
+        </section>
+
+        <!-- Section 1: Transformations (Before/After) -->
+        <% if (beforeAfters && beforeAfters.length > 0) { %>
+        <section class="transformations-section">
+            <!-- ================= START OF I18N CHANGES ================ -->
+            <h2 class="section-title"><%= t('results.transformationsTitle') %></h2>
+            <!-- ================= END OF I18N CHANGES ================== -->
+            <div class="transformations-grid">
+                <% beforeAfters.forEach(testimonial => { %>
+                    <div class="transformation-card">
+                        <div class="magic-reveal-slider">
+                            <img src="<%= (testimonial.afterImage && testimonial.afterImage.url) ? testimonial.afterImage.url : testimonial.afterImage %>" alt="Résultat Après" class="after-image">
+                            <div class="before-image-container">
+                                <img src="<%= (testimonial.beforeImage && testimonial.beforeImage.url) ? testimonial.beforeImage.url : testimonial.beforeImage %>" alt="Résultat Avant" class="before-image">
+                            </div>
+                            <div class="slider-handle">
+                                <div class="slider-arrow left"></div>
+                                <div class="slider-arrow right"></div>
+                            </div>
+                        </div>
+                        <div class="transformation-content">
+                            <!-- ================= START OF I18N CHANGES ================ -->
+                            <% if (testimonial.quote && testimonial.quote[lng]) { %>
+                                <blockquote>"<%= testimonial.quote[lng] %>"</blockquote>
+                            <% } else if (testimonial.quote && testimonial.quote.fr) { %>
+                                <blockquote>"<%= testimonial.quote.fr %>"</blockquote>
+                            <% } %>
+                            
+                            <% if (testimonial.story && testimonial.story[lng]) { %>
+                                <h3><%= t('results.storyTitle') %></h3>
+                                <p><%= testimonial.story[lng] %></p>
+                            <% } else if (testimonial.story && testimonial.story.fr) { %>
+                                <h3><%= t('results.storyTitle') %></h3>
+                                <p><%= testimonial.story.fr %></p>
+                            <% } %>
+
+                            <% if (testimonial.featuredProducts && testimonial.featuredProducts.length > 0) { %>
+                                <h4><%= t('results.routineTitle') %></h4>
+                                <div class="routine-products">
+                                    <% testimonial.featuredProducts.forEach(product => { %>
+                                        <a href="/produit/<%= product.id %>" class="routine-product-item" title="<%= product.name[lng] || product.name.fr %>">
+                                            <img src="<%= (product.mainImage && product.mainImage.url) ? product.mainImage.url : product.mainImage %>" alt="<%= product.name[lng] || product.name.fr %>">
+                                        </a>
+                                    <% }) %>
+                                </div>
+                            <% } %>
+                            <!-- ================= END OF I18N CHANGES ================== -->
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+        <% } %>
+
+        <!-- Section 2: Mots Doux (Instagram Wall) -->
+        <% if (instagrams && instagrams.length > 0) { %>
+        <section class="instagram-wall-section">
+            <!-- ================= START OF I18N CHANGES ================ -->
+            <h2 class="section-title"><%= t('results.communityTitle') %></h2>
+            <!-- ================= END OF I18N CHANGES ================== -->
+            <div class="masonry-grid">
+                <% instagrams.forEach(testimonial => { %>
+                    <div class="masonry-item">
+                        <img src="<%= (testimonial.instagramImage && testimonial.instagramImage.url) ? testimonial.instagramImage.url : testimonial.instagramImage %>" alt="Témoignage Instagram" loading="lazy">
+                          <!-- ================= START OF I18N CHANGES ================ -->
+                          <% if (testimonial.quote && testimonial.quote[lng]) { %>
+                            <div class="masonry-item-overlay">
+                                <p>"<%= testimonial.quote[lng] %>"</p>
+                            </div>
+                          <% } else if (testimonial.quote && testimonial.quote.fr) { %>
+                            <div class="masonry-item-overlay">
+                                <p>"<%= testimonial.quote.fr %>"</p>
+                            </div>
+                          <% } %>
+                          <!-- ================= END OF I18N CHANGES ================== -->
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+        <% } %>
+    </main>
+
+    <!-- Lightbox Structure -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close">×</button>
+        <button class="lightbox-prev">❮</button>
+        <button class="lightbox-next">❯</button>
+
+        <div class="lightbox-content">
+            <img src="" alt="Témoignage en grand" id="lightbox-img">
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+   
+</body>
+</html>

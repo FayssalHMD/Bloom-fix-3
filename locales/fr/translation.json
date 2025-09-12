@@ -1,0 +1,401 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "products": "Produits",
+    "packs": "Packs",
+    "results": "Nos Résultats",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "myAccount": "Mon Compte",
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "register": "Inscription",
+    "cart": "Panier"
+  },
+  "buttons": {
+    "viewDetails": "Voir les détails",
+    "viewAllProducts": "Voir tous les produits",
+    "viewAllPacks": "Voir tous les packs",
+    "addToCart": "Ajouter au Panier",
+    "buyNow": "Acheter Maintenant",
+    "contactUs": "Nous Contacter",
+    "sendMessage": "Envoyer le Message",
+    "undo": "Annuler",
+    "confirmOrder": "Confirmer la Commande",
+    "submitReview": "Envoyer mon avis",
+    "createAccount": "Créer un compte",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "sendLink": "Envoyer le lien",
+    "updatePassword": "Mettre à jour le mot de passe",
+    "saveChanges": "Enregistrer les modifications",
+    "leaveReview": "Laisser un avis",
+    "placeOrder": "Passer Commande",
+    "finalizeOrder": "Finaliser ma Commande",
+     "sending": "Envoi en cours..."
+  },
+  "contact": {
+    "title": "Une question ? On est là pour vous.",
+    "subtitle": "Que ce soit pour une question sur nos produits, une collaboration, ou un suivi de commande, n'hésitez pas. Nous répondons généralement sous 24 heures.",
+    "successMessage": "Merci ! Votre message a bien été envoyé."
+  },
+  "footer": {
+    "privacyPolicy": "Politique de Confidentialité",
+    "termsOfSale": "Conditions Générales de Vente",
+    "copyright": "© 2025 Bloom. Tous droits réservés."
+  },
+  "drawers": {
+    "expressCheckout": "Achat Express",
+    "shippingInfo": "Informations de Livraison"
+  },
+  "forms": {
+    "fullName": "Nom et Prénom",
+    "emailAddress": "Adresse Email",
+    "yourEmail": "Votre Email",
+    "password": "Mot de Passe",
+    "confirmPassword": "Confirmer le Mot de Passe",
+    "newPassword": "Nouveau mot de passe",
+    "confirmNewPassword": "Confirmer le nouveau mot de passe",
+    "subject": "Sujet",
+    "yourMessage": "Votre Message",
+    "phoneNumber": "Numéro de Téléphone",
+    "wilaya": "Wilaya",
+    "selectWilaya": "Sélectionnez votre wilaya",
+    "deliveryMethod": "Méthode de Livraison",
+    "homeDelivery": "Livraison à domicile",
+    "stopDesk": "Bureau",
+    "fullAddress": "Adresse Complète",
+    "relayPoint": "Point de relais (Stop Desk)",
+    "addressForHomeDelivery": "Adresse (pour livraison à domicile)",
+    "name": "Nom",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "method": "Méthode",
+    "addressPlaceholder": "Commune, rue, etc..."
+  },
+  "cart": {
+    "pageTitle": "Votre Panier",
+    "title": "Votre Panier",
+    "summaryTitle": "Résumé de la Commande",
+    "subtotal": "Sous-total",
+    "shippingFees": "Frais de livraison",
+    "emptyTitle": "Votre panier est vide.",
+    "emptySubtitle": "Parcourez nos collections pour trouver quelque chose que vous aimez.",
+    "continueShopping": "Continuer vos achats",
+     "total": "Total",
+    "stopDeskInfo": "Point de collecte Stop Desk : Voir sur Google Maps"
+  },
+  "legal": {
+    "lastUpdated": "Dernière mise à jour"
+  },
+  "terms": {
+    "title": "Conditions Générales de Vente",
+    "content": [
+      {
+        "title": "Article 1 : Objet",
+        "text": "Les présentes conditions régissent les ventes par la société Bloom de ses produits cosmétiques. Ces conditions s'appliquent à l'exclusion de toutes autres conditions."
+      },
+      {
+        "title": "Article 2 : Produits et Prix",
+        "text": "Les produits proposés à la vente sont ceux qui figurent sur le site, dans la limite des stocks disponibles. Les prix sont indiqués en Dinar Algérien (DA) toutes taxes comprises et ne tiennent pas compte des frais de livraison, facturés en supplément et indiqués avant la validation de la commande."
+      },
+      {
+        "title": "Article 3 : Commandes",
+        "text": "Le client peut passer commande sur le site. Le processus de commande se déroule en plusieurs étapes :",
+        "list": [
+          "Sélection des produits et ajout au panier.",
+          "Validation du contenu du panier.",
+          "Fourniture des informations de livraison (nom, téléphone, adresse, wilaya).",
+          "Confirmation de la commande."
+        ]
+      },
+      {
+        "title": "Article 4 : Paiement",
+        "text": "Le paiement s'effectue exclusivement à la livraison, en espèces, directement auprès du livreur. Le montant total à régler est celui indiqué lors de la confirmation de la commande."
+      },
+      {
+        "title": "Article 5 : Livraison",
+        "text": "Les livraisons sont faites à l'adresse indiquée dans le bon de commande. Nous livrons dans les 58 wilayas d'Algérie. Les délais de livraison sont donnés à titre indicatif et peuvent varier. Bloom ne pourra être tenu responsable des conséquences dues à un retard de livraison de la part des services de livraison."
+      },
+      {
+        "title": "Article 6 : Droit de Rétractation et Retours",
+        "text": "Conformément à la législation en vigueur, pour des raisons d'hygiène, les produits cosmétiques ouverts ou utilisés ne peuvent être retournés. En cas de produit défectueux ou non conforme à la commande, le client doit nous contacter dans les 48 heures suivant la réception pour organiser un échange ou un remboursement."
+      },
+      {
+        "title": "Article 7 : Responsabilité",
+        "text": "Bloom s'engage à décrire avec la plus grande exactitude les produits vendus sur le site. La responsabilité de Bloom ne pourrait être engagée pour un dommage résultant de l'utilisation du réseau Internet tel que perte de données, intrusion, virus, ou autres problèmes involontaires."
+      },
+      {
+        "title": "Article 8 : Propriété Intellectuelle",
+        "text": "Tous les éléments du site Bloom sont et restent la propriété intellectuelle et exclusive de Bloom. Nul n'est autorisé à reproduire, exploiter, ou utiliser à quelque titre que ce soit, même partiellement, des éléments du site qu'ils soient logiciels, visuels ou sonores."
+      },
+      {
+        "title": "Article 9 : Droit Applicable",
+        "text": "Les présentes conditions de vente à distance sont soumises à la loi algérienne."
+      }
+    ]
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "content": [
+      {
+        "title": "1. Introduction",
+        "text": "Bienvenue sur Bloom. Nous nous engageons à protéger la vie privée de nos clients. Cette politique de confidentialité explique quelles informations nous collectons, comment nous les utilisons et les droits que vous avez sur vos données personnelles, conformément à la loi n° 18-07 relative à la protection des personnes physiques dans le traitement des données à caractère personnel."
+      },
+      {
+        "title": "2. Données que nous collectons",
+        "text": "Nous collectons les informations suivantes :",
+        "list": [
+          {
+            "title": "Informations d'identification :",
+            "text": "Nom, prénom, adresse e-mail, numéro de téléphone."
+          },
+          {
+            "title": "Informations de livraison :",
+            "text": "Adresse complète, wilaya, commune."
+          },
+          {
+            "title": "Informations de connexion :",
+            "text": "Mot de passe (chiffré), informations sur le compte utilisateur."
+          },
+          {
+            "title": "Données de navigation :",
+            "text": "Adresse IP, type de navigateur, pages visitées (collectées de manière anonyme pour améliorer votre expérience)."
+          }
+        ]
+      },
+      {
+        "title": "3. Comment nous utilisons vos données",
+        "text": "Vos données sont utilisées pour :",
+        "list": [
+          {
+            "title": "Traiter vos commandes :",
+            "text": "Gérer le paiement (à la livraison), la préparation et l'expédition de vos produits."
+          },
+          {
+            "title": "Gérer votre compte :",
+            "text": "Vous permettre de vous connecter, de consulter votre historique de commandes et de gérer votre wishlist."
+          },
+          {
+            "title": "Communiquer avec vous :",
+            "text": "Vous envoyer des confirmations de commande, des notifications d'expédition et répondre à vos questions via le formulaire de contact."
+          },
+          {
+            "title": "Améliorer notre service :",
+            "text": "Analyser les tendances de navigation pour optimiser notre site web."
+          }
+        ]
+      },
+      {
+        "title": "4. Partage des données",
+        "text": "Nous ne vendons, ne louons et ne partageons pas vos données personnelles avec des tiers à des fins marketing. Vos informations de livraison (nom, adresse, téléphone) sont partagées uniquement avec nos partenaires de livraison dans le seul but d'acheminer votre commande."
+      },
+      {
+        "title": "5. Sécurité de vos données",
+        "text": "Nous prenons la sécurité de vos données très au sérieux. Nous utilisons des mesures techniques comme le chiffrement des mots de passe et des protocoles de sécurité (Helmet.js) pour protéger vos informations contre l'accès non autorisé, la modification ou la divulgation."
+      },
+      {
+        "title": "6. Vos droits",
+        "text": "Conformément à la loi, vous disposez des droits suivants :",
+        "list": [
+          {
+            "title": "Droit d'accès :",
+            "text": "Vous pouvez demander à voir les informations que nous détenons sur vous."
+          },
+          {
+            "title": "Droit de rectification :",
+            "text": "Vous pouvez corriger toute information incorrecte dans votre espace \"Mon Compte\"."
+          },
+          {
+            "title": "Droit à l'oubli :",
+            "text": "Vous pouvez demander la suppression de votre compte et de vos données personnelles."
+          }
+        ]
+      },
+      {
+        "title": "7. Cookies",
+        "text": "Notre site utilise des cookies essentiels pour fonctionner (panier, session utilisateur) et des cookies de consentement. Un bandeau vous informe de leur utilisation lors de votre première visite. Pour plus de détails, veuillez consulter notre mécanisme de gestion des cookies."
+      }
+    ]
+  },
+  "auth": {
+    "loginTitle": "Connexion",
+    "loginSubtitle": "Heureux de vous revoir ! Connectez-vous pour accéder à votre compte.",
+    "forgotPassword": "Mot de passe oublié ?",
+    "newUser": "Nouveau chez Bloom ?",
+    "createAccountLink": "Créez un compte",
+    "registerTitle": "Créer un Compte",
+    "registerSubtitle": "Rejoignez la communauté Bloom pour une expérience d'achat plus rapide et personnalisée.",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "loginLink": "Connectez-vous",
+    "forgotPasswordTitle": "Mot de passe oublié",
+    "forgotPasswordSubtitle": "Entrez votre email pour recevoir un lien de réinitialisation.",
+    "rememberPassword": "Vous vous souvenez de votre mot de passe ?",
+    "newPasswordTitle": "Nouveau mot de passe",
+    "newPasswordSubtitle": "Veuillez choisir un nouveau mot de passe sécurisé.",
+    "resetPasswordTitle": "Réinitialiser le mot de passe",
+    "checkEmailTitle": "Vérifiez votre boîte mail",
+    "checkEmailSubtitle": "Votre inscription est presque terminée ! Nous vous avons envoyé un email de vérification pour activer votre compte.",
+    "didNotReceiveEmail": "Vous n'avez rien reçu ? Vérifiez votre dossier spam ou",
+    "tryRegisterAgain": "réessayez de vous inscrire",
+    "invalidCredentials": "Email ou mot de passe incorrect.",
+    "emailNotVerified": "Veuillez vérifier votre adresse email avant de vous connecter.",
+    "invalidVerificationLink": "Lien de vérification invalide ou expiré. Veuillez vous inscrire à nouveau.",
+    "emailVerifiedSuccess": "Email vérifié avec succès ! Vous pouvez maintenant vous connecter.",
+    "verificationError": "Une erreur est survenue lors de la vérification. Veuillez réessayer.",
+    "passwordResetLinkSent": "Si un compte avec cet email existe, un lien de réinitialisation a été envoyé.",
+    "invalidOrExpiredLink": "Le lien de réinitialisation est invalide ou a expiré. Veuillez en demander un nouveau.",
+    "passwordResetSuccess": "Votre mot de passe a été réinitialisé avec succès. Vous pouvez maintenant vous connecter.",
+    "passwordLengthError": "Le mot de passe doit contenir au moins 6 caractères.",
+    "passwordsDoNotMatch": "Les mots de passe ne correspondent pas."
+  },
+  "modals": {
+    "reviewTitle": "Votre avis sur ce produit",
+    "yourRating": "Votre note",
+    "yourComment": "Votre commentaire",
+    "commentPlaceholder": "Partagez votre expérience...",
+    "loginRequiredTitle": "Connexion requise",
+      "loginRequiredForWishlist": "Veuillez vous connecter ou créer un compte pour utiliser cette fonctionnalité.",
+    "confirmDeleteTitle": "Confirmer la Suppression",
+    "confirmDeleteItem": "Êtes-vous sûr de vouloir supprimer cet article de votre panier ?",
+    "confirmDeleteReview": "Êtes-vous sûr de vouloir supprimer votre avis ? Cette action est irréversible."
+  },
+  "aria": {
+    "close": "Fermer",
+    "closeSearch": "Fermer la recherche",
+    "deleteReview": "Supprimer mon avis"
+  },
+  "toasts": {
+   "wishlistAdded": "Ajouté à la wishlist !",
+    "wishlistRemoved": "Retiré de la wishlist.",
+    "reviewAdded": "Avis ajouté avec succès !",
+    "alreadyReviewed": "Vous avez déjà laissé un avis pour ce produit.",
+    "fillRequiredFields": "Veuillez remplir tous les champs requis.",
+    "invalidPhoneNumber": "Veuillez corriger le numéro de téléphone.",
+    "enterAddress": "Veuillez entrer votre adresse pour la livraison à domicile.",
+    "orderReceived": "Merci ! Votre commande a été reçue.",
+    "connectionError": "Une erreur de connexion est survenue.",
+    "orderWillBeSent": "Votre commande sera envoyée dans {{count}}s.",
+    "sendingInProgress": "Envoi en cours...",
+    "selectWilayaToast": "Veuillez sélectionner votre wilaya de livraison.",
+    "genericError": "Une erreur est survenue. Veuillez réessayer.",
+    "itemAddedToCart": "'{{itemName}}' a été ajouté au panier !"
+  },
+  "home": {
+    "heroTitle": "Douce au Naturelle.",
+    "heroSubtitle": "Découvrez le pouvoir doux de la nature. Notre huile exclusive nourrit votre peau, la laissant douce, radieuse et magnifiquement nette.",
+    "heroButton": "Découvrir nos produits",
+    "commitmentTitle": "Une certitude, pas une promesse.",
+    "commitmentParagraph": "Chez Bloom, l'efficacité est notre certitude. Attendez-vous à des résultats rapides, visibles dès les premières utilisations, et surtout durables. Plus de 1000 clientes satisfaites ont déjà fait confiance à notre expertise.",
+    "commitmentConclusion": "Si vous cherchez le meilleur, vous êtes au bon endroit.",
+    "featuredProducts": "Nos Incontournables",
+    "featuredPacks": "Nos Offres Exclusives",
+    "deliveryBox1Title": "Comment Commander",
+    "deliveryBox1Text": "Choisissez vos produits, finalisez votre commande, et laissez-nous nous occuper du reste. C'est simple et rapide.",
+    "deliveryBox2Title": "Paiement à la Livraison",
+    "deliveryBox2Text": "Payez en toute sécurité en espèces directement au livreur lorsque vous recevez votre colis.",
+    "deliveryBox3Title": "Livraison 58 Wilayas",
+    "deliveryBox3Text": "Nous livrons à votre domicile ou en point relais (Stop Desk) partout en Algérie.",
+    "testimonialsTitle": "Ce qu'en disent nos clientes.",
+    "testimonials": [
+      {
+        "stars": 5,
+        "text": "Franchement, j'ai souffert avec mes poils, à chaque fois que je m'épile, ils repoussent drus et vite. J'ai essayé plein d'huiles, aucune ne m'a donné le résultat espéré. Jusqu'à ce que j'essaie cette huile, et je vous jure que j'ai senti la différence, les poils repoussent fins et beaucoup plus lentement, et ma peau est devenue douce comme de la soie. J'ai l'impression d'avoir gagné beaucoup de temps et de ne plus souffrir chaque semaine.",
+        "author": "Inès B."
+      },
+      {
+        "stars": 5,
+        "text": "Ça fait des années que j'utilise des crèmes de toutes marques sans voir de grande différence, juste une légère hydratation. J'avais perdu espoir jusqu'à ce que je trouve cette crème. Dès la première semaine, le résultat a commencé à apparaître, le teint de ma peau a commencé à s'unifier, et les zones sombres sur mes genoux et coudes ont commencé à disparaître. Je l'ai utilisée pendant deux mois et ma peau est redevenue comme avant, claire, blanche et nette. Pour moi, cette crème a changé ma vie et m'a redonné confiance en moi.",
+        "author": "Sarah L."
+      },
+      {
+        "stars": 4,
+        "text": "Très bon produit, j'ai vu une différence sur mes cicatrices d'acné après quelques semaines. La livraison a été rapide. Le flacon est aussi très joli.",
+        "author": "Fatima Z."
+      },
+      {
+        "stars": 5,
+        "text": "Ce produit est devenu un indispensable dans ma routine du soir. Il hydrate parfaitement ma peau mixte sans la graisser. Un vrai coup de cœur.",
+        "author": "Amira K."
+      },
+      {
+        "stars": 5,
+        "text": "Avant, je perdais mon temps avec la cire chaque semaine, c'était une vraie galère. J'ai utilisé cette huile pendant deux mois et croyez-moi, la différence est énorme, les poils ne sont plus aussi visibles qu'avant, et j'ai la liberté de porter ce que je veux sans y penser tous les jours. Le meilleur investissement que j'ai fait pour moi-même.",
+        "author": "Nour H."
+      }
+    ],
+    "ctaTitle": "Prête à révéler votre éclat ?",
+    "ctaSubtitle": "Votre voyage vers une peau lumineuse commence ici.",
+    "ctaButton": "Explorer la Collection"
+  },
+  "boutique": {
+    "title": "Notre Collection Complète",
+    "productsTitle": "Nos Produits",
+    "packsTitle": "Nos Packs"
+  },
+  "product": {
+    "description": "Description",
+    "ingredients": "Ingrédients",
+    "howToUse": "Conseils d'utilisation",
+    "reviewsTitle": "Avis de nos clientes ({{count}})",
+    "noReviews": "Il n'y a pas encore d'avis pour ce produit. Soyez le premier !"
+  },
+  "results": {
+    "heroTitle": "Leurs Histoires, Vos Résultats.",
+    "heroSubtitle": "Chez Bloom, notre plus grande fierté est le sourire de nos clientes. Découvrez des transformations authentiques et des mots doux partagés par notre communauté. Chaque résultat est une histoire, et nous sommes impatients de faire partie de la vôtre.",
+    "transformationsTitle": "Transformations",
+    "storyTitle": "Le Récit",
+    "routineTitle": "La Routine Bloom Utilisée",
+    "communityTitle": "Mots Doux de la Communauté"
+  },
+  "faq": {
+    "heroTitle": "Une question ? Nous sommes là pour vous aider.",
+    "searchPlaceholder": "Rechercher une question...",
+    "allCategories": "Toutes",
+    "noResultsTitle": "Aucun résultat",
+    "noResultsSubtitle": "Nous n'avons trouvé aucune question correspondant à votre recherche.",
+    "ctaTitle": "Vous ne trouvez pas de réponse ?",
+    "ctaSubtitle": "Notre équipe est prête à vous aider. Contactez-nous directement pour toute question.",
+    "noQuestionsYet": "Aucune question n'a été ajoutée pour le moment."
+  },
+  "account": {
+    "sidebar": {
+      "title": "Mon Compte",
+      "dashboard": "Tableau de bord",
+      "details": "Détails du compte",
+      "wishlist": "Ma Wishlist"
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "greeting": "Bonjour, {{name}} ! D'ici, vous pouvez consulter vos commandes récentes.",
+      "orderHistory": "Historique des Commandes",
+      "order": "Commande",
+      "date": "Date",
+      "status": "Statut",
+      "total": "Total",
+      "noOrders": "Vous n'avez encore passé aucune commande.",
+      "startShopping": "Commencer vos achats"
+    },
+    "details": {
+      "title": "Détails du Compte",
+      "subtitle": "Mettez à jour vos informations de livraison pour un paiement plus rapide.",
+      "successMessage": "Vos informations ont été enregistrées avec succès."
+    },
+    "wishlist": {
+      "title": "Ma Wishlist",
+      "subtitle": "Vos produits et packs favoris, tous au même endroit.",
+      "empty": "Votre wishlist est vide.",
+      "explore": "Explorer la collection"
+    },
+    "orderDetails": {
+      "title": "Détails de la Commande",
+      "subtitle": "Commande #{{id}} passée le {{date}}",
+      "backToOrders": "Retour aux commandes",
+      "quantity": "Quantité",
+      "summary": "Résumé",
+      "subtotal": "Sous-total",
+      "shipping": "Livraison",
+      "shippingAddress": "Adresse de livraison"
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="<%= lng %>" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= t('cart.pageTitle') %> - Bloom</title>
+
+    <!-- ================================================== -->
+    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
+    <!-- ================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <!-- ================================================== -->
+    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
+    <!-- ================================================== -->
+
+    
+    <link rel="icon" type="image/png" href="/images/title-icon.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    
+</head>
+<body>
+    <%- include('partials/header', { t: t, lng: lng, pageType: pageType, currentUrl: currentUrl, user: user }) %>
+
+    <main class="cart-page-main">
+        <div class="cart-container">
+            <div id="cart-content-wrapper">
+                <h1><%= t('cart.title') %></h1>
+                <div class="cart-layout">
+                    <div id="cart-items-panel"></div>
+                    <div class="cart-summary-panel">
+                        <h2><%= t('cart.summaryTitle') %></h2>
+                        <div class="summary-row">
+                            <span><%= t('cart.subtotal') %></span>
+                             <span id="summary-subtotal"><%= formatPrice(0, lng) %></span>
+                        </div>
+                        <div class="shipping-calculator">
+                            <div class="form-group">
+                                <label for="summary-wilaya"><%= t('forms.wilaya') %></label>
+                                <div class="custom-select">
+                                    <select id="summary-wilaya" name="wilaya" required>
+                                        <option value="" disabled selected><%= t('forms.selectWilaya') %></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label><%= t('forms.deliveryMethod') %></label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="summary-delivery" value="stopdesk" checked> <%= t('forms.stopDesk') %></label>
+                                    <label><input type="radio" name="summary-delivery" value="home"> <%= t('forms.homeDelivery') %></label>
+                                </div>
+                                <div id="stopdesk-info-box" class="stopdesk-info-box" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="summary-row">
+                            <span><%= t('cart.shippingFees') %></span>
+                            <div>
+                                <span id="summary-shipping"><%= formatPrice(0, lng) %></span>
+                                <span id="shipping-discount-notice" class="shipping-discount-notice"></span>
+                            </div>
+                        </div>
+                        <div class="summary-divider"></div>
+                        <div class="summary-row total-row">
+                            <span><%= t('cart.total') %></span>
+                            <span id="summary-total"><%= formatPrice(0, lng) %></span>
+                        </div>
+                        <div id="checkout-details-form" style="display: none;">
+                            <div class="form-group">
+                                <label for="checkout-name"><%= t('forms.fullName') %></label>
+                                <input type="text" id="checkout-name" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout-phone"><%= t('forms.phoneNumber') %></label>
+                                <input type="tel" id="checkout-phone" name="phone" required>
+                                <span id="phone-error-message" class="phone-error-message"></span>
+                            </div>
+                            <div class="form-group" id="checkout-address-group" style="display: none;">
+                                <label for="checkout-address"><%= t('forms.fullAddress') %></label>
+                                <textarea id="checkout-address" name="address" placeholder="<%= t('forms.addressPlaceholder') %>"></textarea>
+                            </div>
+                            <button id="confirm-order-btn"><%= t('buttons.placeOrder') %></button>
+                        </div>
+                        <button id="checkout-btn"><%= t('buttons.finalizeOrder') %></button>
+                    </div>
+                </div>
+            </div>
+            <div id="empty-cart-container" style="display: none;">
+                <h2><%= t('cart.emptyTitle') %></h2>
+                <p><%= t('cart.emptySubtitle') %></p>
+                <a href="/#nos-produits" class="btn-primary"><%= t('cart.continueShopping') %></a>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    <%- include('partials/modals') %>
+</body>
+</html>

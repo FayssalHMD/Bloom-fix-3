@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="<%= lng %>" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <!-- ================================================== -->
+    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
+    <!-- ================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <!-- ================================================== -->
+    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
+    <!-- ================================================== -->
+     
+    <link rel="icon" type="image/png" href="/images/title-icon.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    
+</head>
+<body>
+    <%- include('partials/header', { t: t, lng: lng, pageType: pageType, currentUrl: currentUrl, user: user }) %>
+    <main class="legal-page">
+        <div class="legal-container">
+            <div class="legal-content">
+                <h1><%= t('terms.title') %></h1>
+                <p><strong><%= t('legal.lastUpdated') %>:</strong> 24 août 2025</p>
+                <% const termsContent = t('terms.content', { returnObjects: true }); %>
+                <% termsContent.forEach(section => { %>
+                    <h3><%- section.title %></h3>
+                    <% if (section.list) { %>
+                        <ol>
+                            <% section.list.forEach(item => { %>
+                                <li><%- item %></li>
+                            <% }) %>
+                        </ol>
+                    <% } else { %>
+                        <p><%- section.text %></p>
+                    <% } %>
+                <% }) %>
+            </div>
+        </div>
+    </main>
+    <%- include('partials/footer') %>
+    <%- include('partials/modals') %>
+</body>
+</html>

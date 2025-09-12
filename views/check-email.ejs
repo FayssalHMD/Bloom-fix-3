@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="<%= lng %>" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= t('auth.checkEmailTitle') %></title>
+
+    <!-- ================================================== -->
+    <!--     START: ADD AMIRI & CAIRO FOR ARABIC FONTS    -->
+    <!-- ================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <!-- ================================================== -->
+    <!--      END: ADD AMIRI & CAIRO FOR ARABIC FONTS     -->
+    <!-- ================================================== -->
+
+    
+    <link rel="icon" type="image/png" href="/images/title-icon.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    
+</head>
+<body class="no-scroll">
+
+   <%- include('partials/header', { t: t, lng: lng, pageType: pageType, currentUrl: currentUrl, user: user }) %>
+
+    <main class="auth-page">
+        <div class="auth-container">
+            
+            <!-- Using a consistent icon style -->
+            <div class="confirm-icon" style="background-color: rgba(217, 184, 180, 0.2); color: var(--accent-color); margin-bottom: 1.5rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+            </div>
+
+              <h1 class="auth-title"><%= t('auth.checkEmailTitle') %></h1>
+            <p class="auth-subtitle"><%= t('auth.checkEmailSubtitle') %></p>
+            
+            <div class="auth-switch" style="margin-top: 1rem;">
+                <p><%= t('auth.didNotReceiveEmail') %> <a href="/register"><%= t('auth.tryRegisterAgain') %>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+
+</body>
+</html>

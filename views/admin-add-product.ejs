@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Produit - Bloom Admin</title>
+    <link rel="icon" type="image/png" href="/images/title-icon.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/admin.css">
+    <link rel="stylesheet" href="/styles/admin-form.css">
+</head>
+<body>
+    <%- include('partials/admin-header') %>
+
+    <main class="admin-main">
+        <div class="composer-header">
+            <h1>Ajouter un Nouveau Produit</h1>
+            <a href="/admin/products" class="btn-cancel">← Annuler</a>
+        </div>
+
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <div class="admin-error-banner">
+                <strong>Erreur de validation :</strong>
+                <ul>
+                    <% errors.forEach(error => { %>
+                        <li><%= error.msg %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        <% } %>
+
+        <form action="/admin/products/add" method="POST" enctype="multipart/form-data">
+        
+            <div class="composer-main">
+                <!-- Left Panel: Main Info -->
+                <div class="composer-panel composer-panel-main">
+                    
+                    <!-- ================================================== -->
+                    <!--                 START OF I18N CHANGES                -->
+                    <!-- ================================================== -->
+                    <div class="lang-tabs">
+                        <div class="tab active" data-lang="fr">Français</div>
+                        <div class="tab" data-lang="ar">العربية</div>
+                    </div>
+
+                    <!-- French Panel -->
+                    <div id="panel-fr" class="lang-panel active">
+                        <h2>Informations Essentielles (FR)</h2>
+                        <p class="subtitle">Version française du contenu.</p>
+                        
+                        <div class="form-group">
+                            <label for="name-fr">Nom du Produit</label>
+                            <input type="text" id="name-fr" name="name[fr]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="short_description-fr">Description Courte</label>
+                            <textarea id="short_description-fr" name="short_description[fr]" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="description-fr">Description Complète</label>
+                            <textarea id="description-fr" name="description[fr]" rows="6" required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Arabic Panel -->
+                    <div id="panel-ar" class="lang-panel">
+                        <h2>المعلومات الأساسية (AR)</h2>
+                        <p class="subtitle">النسخة العربية للمحتوى.</p>
+                        
+                        <div class="form-group">
+                            <label for="name-ar">اسم المنتج</label>
+                            <input type="text" id="name-ar" name="name[ar]" required dir="rtl">
+                        </div>
+                        <div class="form-group">
+                            <label for="short_description-ar">وصف قصير</label>
+                            <textarea id="short_description-ar" name="short_description[ar]" rows="3" required dir="rtl"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="description-ar">وصف كامل</label>
+                            <textarea id="description-ar" name="description[ar]" rows="6" required dir="rtl"></textarea>
+                        </div>
+                    </div>
+                    <!-- ================================================== -->
+                    <!--                  END OF I18N CHANGES                 -->
+                    <!-- ================================================== -->
+
+                </div>
+
+                <!-- Right Panel: Media & Attributes -->
+                <div class="composer-panel composer-panel-side">
+                    <div class="form-group">
+                        <label for="price">Prix (DA)</label>
+                        <input type="number" id="price" name="price" step="0.01" required>
+                    </div>
+                    <hr class="form-divider">
+                    <div class="form-group">
+                        <label for="mainImage">Image Principale (Requise)</label>
+                        <label for="mainImage" class="image-upload-zone">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            <p>Glissez-déposez ou cliquez</p>
+                            <span>PNG, JPG, WEBP</span>
+                        </label>
+                        <input type="file" id="mainImage" name="mainImage" accept="image/*" style="display: none;" required>
+                        <div id="main-image-preview" class="image-previews"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gallery">Images de la Galerie (Optionnel)</label>
+                        <label for="gallery" class="image-upload-zone">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            <p>Ajouter des images</p>
+                            <span>Jusqu'à 5 images</span>
+                        </label>
+                        <input type="file" id="gallery" name="gallery" accept="image/*" style="display: none;" multiple>
+                        <div id="gallery-previews" class="image-previews"></div>
+                    </div>
+                    <hr class="form-divider">
+                    
+                    <!-- ================================================== -->
+                    <!--                 START OF I18N CHANGES                -->
+                    <!-- ================================================== -->
+                    <!-- French Panel (Side) -->
+                    <div id="panel-fr-side" class="lang-panel active">
+                        <div class="form-group" id="ingredients-tag-input-fr">
+                            <label for="ingredients-input-fr">Ingrédients (FR)</label>
+                            <div class="tag-input-container">
+                                <div class="tags"></div>
+                                <input type="text" id="ingredients-input-fr" placeholder="Ajouter et presser Entrée...">
+                                <input type="hidden" name="ingredients[fr]">
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="how-to-use-tag-input-fr">
+                            <label for="how-to-use-input-fr">Conseils d'utilisation (FR)</label>
+                            <div class="tag-input-container">
+                                <div class="tags"></div>
+                                <input type="text" id="how-to-use-input-fr" placeholder="Ajouter et presser Entrée...">
+                                <input type="hidden" name="how_to_use[fr]">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arabic Panel (Side) -->
+                    <div id="panel-ar-side" class="lang-panel">
+                        <div class="form-group" id="ingredients-tag-input-ar">
+                            <label for="ingredients-input-ar">المكونات (AR)</label>
+                            <div class="tag-input-container">
+                                <div class="tags"></div>
+                                <input type="text" id="ingredients-input-ar" placeholder="أضف واضغط على إدخال..." dir="rtl">
+                                <input type="hidden" name="ingredients[ar]">
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="how-to-use-tag-input-ar">
+                            <label for="how-to-use-input-ar">نصائح الاستخدام (AR)</label>
+                            <div class="tag-input-container">
+                                <div class="tags"></div>
+                                <input type="text" id="how-to-use-input-ar" placeholder="أضف واضغط على إدخال..." dir="rtl">
+                                <input type="hidden" name="how_to_use[ar]">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ================================================== -->
+                    <!--                  END OF I18N CHANGES                 -->
+                    <!-- ================================================== -->
+                </div>
+            </div>
+
+            <div class="composer-actions">
+                <a href="/admin/products" class="btn-cancel">Annuler</a>
+                <button type="submit" class="admin-btn admin-btn-primary btn-submit">Enregistrer le Produit</button>
+            </div>
+        </form>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script nonce="<%= nonce %>" src="/functions/admin.js"></script>
+    <script nonce="<%= nonce %>" src="/functions/admin-form.js"></script>
+
+</body>
+</html>

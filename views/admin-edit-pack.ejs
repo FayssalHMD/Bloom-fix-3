@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FIX: Access French name for title -->
+    <title>Modifier: <%= pack.name.fr %> - Bloom Admin</title>
+    <link rel="icon" type="image/png" href="/images/title-icon.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/admin.css">
+    <link rel="stylesheet" href="/styles/admin-form.css">
+</head>
+<body>
+    <%- include('partials/admin-header') %>
+
+    <main class="admin-main">
+        <div class="composer-header">
+            <h1>Modifier le Pack</h1>
+            <a href="/admin/products" class="btn-cancel">← Annuler</a>
+        </div>
+
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <div class="admin-error-banner">
+                <strong>Erreur de validation :</strong>
+                <ul>
+                    <% errors.forEach(error => { %>
+                        <li><%= error.msg %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        <% } %>
+
+        <form action="/admin/packs/edit/<%= pack._id %>" method="POST" enctype="multipart/form-data">
+           
+            <div class="composer-main">
+                <!-- Left Panel: Main Info -->
+                <div class="composer-panel composer-panel-main">
+                    <!-- ================================================== -->
+                    <!--                 START OF I18N CHANGES                -->
+                    <!-- ================================================== -->
+                    <div class="lang-tabs">
+                        <div class="tab active" data-lang="fr">Français</div>
+                        <div class="tab" data-lang="ar">العربية</div>
+                    </div>
+
+                    <!-- French Panel -->
+                    <div id="panel-fr" class="lang-panel active">
+                        <h2>Informations Essentielles (FR)</h2>
+                        <p class="subtitle">Version française du contenu du pack.</p>
+                        
+                        <div class="form-group">
+                            <label for="name-fr">Nom du Pack</label>
+                            <input type="text" id="name-fr" name="name[fr]" value="<%= pack.name.fr %>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contents-fr">Contenu du pack (description courte)</label>
+                            <input type="text" id="contents-fr" name="contents[fr]" value="<%= pack.contents.fr %>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description-fr">Description Complète</label>
+                            <textarea id="description-fr" name="description[fr]" rows="5" required><%= pack.description.fr %></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Arabic Panel -->
+                    <div id="panel-ar" class="lang-panel">
+                        <h2>المعلومات الأساسية (AR)</h2>
+                        <p class="subtitle">النسخة العربية لمحتوى الباقة.</p>
+                        
+                        <div class="form-group">
+                            <label for="name-ar">اسم الباقة</label>
+                            <input type="text" id="name-ar" name="name[ar]" value="<%= pack.name.ar %>" required dir="rtl">
+                        </div>
+                        <div class="form-group">
+                            <label for="contents-ar">محتوى الباقة (وصف قصير)</label>
+                            <input type="text" id="contents-ar" name="contents[ar]" value="<%= pack.contents.ar %>" required dir="rtl">
+                        </div>
+                        <div class="form-group">
+                            <label for="description-ar">وصف كامل</label>
+                            <textarea id="description-ar" name="description[ar]" rows="5" required dir="rtl"><%= pack.description.ar %></textarea>
+                        </div>
+                    </div>
+                    <!-- ================================================== -->
+                    <!--                  END OF I18N CHANGES                 -->
+                    <!-- ================================================== -->
+                    <hr class="form-divider">
+                    <h2>Détails de Prix</h2>
+                    <div class="form-group">
+                        <label for="id">ID Pack (slug)</label>
+                        <input type="text" id="id" name="id" value="<%= pack.id %>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="originalPrice">Prix Original (DA)</label>
+                        <input type="number" id="originalPrice" name="originalPrice" value="<%= pack.originalPrice %>" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="discountedPrice">Prix Réduit (DA)</label>
+                        <input type="number" id="discountedPrice" name="discountedPrice" value="<%= pack.discountedPrice %>" step="0.01" required>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Media -->
+                <div class="composer-panel composer-panel-side">
+                    <div class="form-group">
+                        <label for="mainImage">Changer l'Image du Pack</label>
+                        <label for="mainImage" class="image-upload-zone">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            <p>Glissez-déposez ou cliquez</p>
+                            <span>Pour remplacer l'image actuelle</span>
+                        </label>
+                        <input type="file" id="mainImage" name="mainImage" accept="image/*" style="display: none;">
+                        <div id="main-image-preview" class="image-previews">
+                            <% const mainImageUrl = (pack.mainImage && pack.mainImage.url) ? pack.mainImage.url : pack.mainImage; %>
+                            <% if (mainImageUrl) { %>
+                                <div class="img-preview">
+                                    <img src="<%= mainImageUrl %>" alt="Image principale actuelle">
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gallery">Gérer les Images de la Galerie</label>
+                        <label for="gallery" class="image-upload-zone">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            <p>Ajouter de nouvelles images</p>
+                        </label>
+                        <input type="file" id="gallery" name="gallery" accept="image/*" style="display: none;" multiple>
+                        <div id="gallery-previews" class="image-previews">
+                            <% if (pack.gallery && pack.gallery.length > 0) { %>
+                                <% pack.gallery.forEach(image => { %>
+                                    <% 
+                                        const imageUrl = (image && image.url) ? image.url : image;
+                                        const publicId = (image && image.public_id) ? image.public_id : '';
+                                    %>
+                                    <div class="img-preview" data-public-id="<%= publicId %>">
+                                        <img src="<%= imageUrl %>" alt="Image de la galerie">
+                                        <button type="button" class="remove-img-btn" aria-label="Supprimer l'image">×</button>
+                                    </div>
+                                <% }) %>
+                            <% } %>
+                        </div>
+                        <input type="hidden" id="images_to_delete" name="images_to_delete" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="composer-actions">
+                <a href="/admin/products" class="btn-cancel">Annuler</a>
+                <button type="submit" class="admin-btn admin-btn-primary btn-submit">Mettre à jour le Pack</button>
+            </div>
+        </form>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script nonce="<%= nonce %>" src="/functions/admin.js"></script>
+    <script nonce="<%= nonce %>" src="/functions/admin-form.js"></script>
+</body>
+</html>
