@@ -1541,7 +1541,10 @@ ul {
 .nav-menu.desktop-only,
 .nav-actions .user-account-icon,
 .nav-actions .cart-icon,
-#theme-toggle-btn,.nav-actions { /* <-- Add this line */
+#theme-toggle-btn{ /* <-- Add this line */
+    display: none;
+}
+    .nav-actions .nav-icon-btn {
     display: none;
 }
     .nav-actions {
@@ -1676,6 +1679,9 @@ ul {
         width: 85%;
         max-width: 350px;
         padding: 25px;
+        height: 380px; /* Set a fixed, generous height for mobile */
+    justify-content: flex-start; /* Align content to the top */
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
     }
     .testimonial-card.prev {
         transform: translateX(-110%) scale(1);
@@ -4510,6 +4516,7 @@ ul {
     border-radius: 50px;
 
 }
+
 
 
 
