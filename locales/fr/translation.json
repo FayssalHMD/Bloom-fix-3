@@ -300,28 +300,68 @@
     "testimonials": [
       {
         "stars": 5,
-        "text": "Franchement, j'ai souffert avec mes poils, à chaque fois que je m'épile, ils repoussent drus et vite. J'ai essayé plein d'huiles, aucune ne m'a donné le résultat espéré. Jusqu'à ce que j'essaie cette huile, et je vous jure que j'ai senti la différence, les poils repoussent fins et beaucoup plus lentement, et ma peau est devenue douce comme de la soie. J'ai l'impression d'avoir gagné beaucoup de temps et de ne plus souffrir chaque semaine.",
-        "author": "Inès B."
+        "text": "Franchement, j'ai beaucoup souffert avec les poils, à chaque fois, ils repoussaient épais et rapidement. J'ai essayé de nombreuses huiles, mais aucune ne m'a donné le résultat que j'espérais. Jusqu'à ce que j'essaie cette huile, et je jure que j'ai senti la différence, les poils repoussent plus fins et beaucoup plus lentement, et ma peau est devenue douce comme de la soie. J'ai l'impression d'avoir gagné beaucoup de temps et de ne plus souffrir chaque semaine.",
+        "author": "Amira B."
       },
       {
         "stars": 5,
-        "text": "Ça fait des années que j'utilise des crèmes de toutes marques sans voir de grande différence, juste une légère hydratation. J'avais perdu espoir jusqu'à ce que je trouve cette crème. Dès la première semaine, le résultat a commencé à apparaître, le teint de ma peau a commencé à s'unifier, et les zones sombres sur mes genoux et coudes ont commencé à disparaître. Je l'ai utilisée pendant deux mois et ma peau est redevenue comme avant, claire, blanche et nette. Pour moi, cette crème a changé ma vie et m'a redonné confiance en moi.",
-        "author": "Sarah L."
+        "text": "Cela fait des années que j'utilise des crèmes de toutes marques sans voir de grande différence, juste une légère hydratation. J'avais honnêtement perdu espoir jusqu'à ce que je trouve cette crème. Dès la première semaine, les résultats ont commencé à apparaître, mon teint a commencé à s'unifier, et les zones sombres sur mes genoux et coudes ont commencé à s'estomper. J'ai continué pendant deux mois et ma peau est redevenue comme avant, claire, blanche et nette. Pour moi, cette crème a changé ma vie et m'a redonné confiance en moi.",
+        "author": "Khadija L."
       },
       {
         "stars": 4,
-        "text": "Très bon produit, j'ai vu une différence sur mes cicatrices d'acné après quelques semaines. La livraison a été rapide. Le flacon est aussi très joli.",
+        "text": "Pour être honnête, je travaille beaucoup et je n'ai pas le temps de bien prendre soin de moi. Je cherche toujours une solution simple qui donne des résultats. J'ai essayé des produits chers sans grand succès. J'ai décidé d'essayer ce pack en dernier recours. Et je vous jure, c'était la meilleure chose que j'ai faite, l'huile a visiblement réduit ma pilosité et la crème m'a donné blancheur et douceur. Quand je me regarde dans le miroir, je me sens comme une nouvelle femme. Pour moi, cela a changé ma vie et m'a fait économiser du temps et des efforts.",
         "author": "Fatima Z."
       },
       {
         "stars": 5,
-        "text": "Ce produit est devenu un indispensable dans ma routine du soir. Il hydrate parfaitement ma peau mixte sans la graisser. Un vrai coup de cœur.",
-        "author": "Amira K."
+        "text": "Avant, je perdais mon temps avec l'épilation à la cire chaque semaine, et c'était une vraie souffrance. J'ai utilisé cette huile pendant deux mois et croyez-moi, la différence est énorme, les poils ne sont plus aussi visibles qu'avant, et j'ai la liberté de porter ce que je veux sans y penser tous les jours. C'est le meilleur investissement que j'ai fait pour moi-même.",
+        "author": "Manon T."
       },
       {
         "stars": 5,
-        "text": "Avant, je perdais mon temps avec la cire chaque semaine, c'était une vraie galère. J'ai utilisé cette huile pendant deux mois et croyez-moi, la différence est énorme, les poils ne sont plus aussi visibles qu'avant, et j'ai la liberté de porter ce que je veux sans y penser tous les jours. Le meilleur investissement que j'ai fait pour moi-même.",
-        "author": "Nour H."
+        "text": "Avant, les gens me demandaient pourquoi mes mains étaient sombres, je me sentais très gênée. J'ai essayé des mélanges, des produits naturels et des crèmes, sans aucun changement. Cette crème est la première et la seule qui m'ait donné un résultat : mes mains et mon visage ont maintenant un teint unifié, et je ne peux plus m'en passer. Croyez-moi, elle changera votre vie comme elle a changé la mienne.",
+        "author": "Aïcha M."
+      },
+      {
+        "stars": 4,
+        "text": "J'ai essayé beaucoup d'huiles auparavant, mais cette huile est la seule qui m'ait donné des résultats, les poils repoussent beaucoup moins et ne sont plus aussi visibles qu'avant.",
+        "author": "Imane S."
+      },
+      {
+        "stars": 5,
+        "text": "Son odeur est légère et elle n'irrite pas la peau après l'épilation, c'est génial.",
+        "author": "Chloé H."
+      },
+      {
+        "stars": 5,
+        "text": "Je l'utilise depuis un mois et demi, et je ne la changerai pour rien au monde, elle a considérablement réduit ma pilosité.",
+        "author": "Sarah O."
+      },
+      {
+        "stars": 4,
+        "text": "C'est quelque chose d'extraordinaire, quand je vois mes jambes comme ça sans poils, je me dis que Dieu vous bénisse.",
+        "author": "Sabrina N."
+      },
+      {
+        "stars": 5,
+        "text": "Cette crème est incroyable, elle éclaircit et hydrate en même temps sans laisser la peau grasse.",
+        "author": "Camille R."
+      },
+      {
+        "stars": 5,
+        "text": "Avant j'avais des taches sombres sur les genoux et les coudes, Dieu merci, ma peau est devenue très claire.",
+        "author": "Sophie K."
+      },
+      {
+        "stars": 4,
+        "text": "J'ai essayé des marques chères avant sans voir de différence, honnêtement, cette crème est bien meilleure que toutes les autres.",
+        "author": "Anissa J."
+      },
+      {
+        "stars": 5,
+        "text": "Ma peau est devenue claire et blanche comme du lait, c'est magnifique.",
+        "author": "Linda Y."
       }
     ],
     "ctaTitle": "Prête à révéler votre éclat ?",
