@@ -117,7 +117,8 @@
     margin-bottom: 1rem;
 }
 
-.product-purchase-panel #product-short-desc {
+.product-purchase-panel #product-short-desc,
+.product-purchase-panel #pack-contents {
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 2rem;
@@ -624,6 +625,11 @@
         grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
         gap: 0.5rem;
     }
+    .quantity-section {
+    flex-direction: column; /* Stacks the quantity selector and the price vertically */
+    gap: 1rem;             /* Adds a nice space between the two stacked items */
+    align-items: center;   /* Ensures both items are centered horizontally */
+}
 }
 
 

@@ -3650,7 +3650,7 @@ ul {
 /* Custom Navigation Arrows */
 .swiper-button-prev,
 .swiper-button-next {
-    width: 82px;
+    width: 48px;
     height: 48px;
     background-color: var(--background-color);
     border: 1px solid var(--border-color);
@@ -4599,5 +4599,38 @@ ul {
     .prompt-modal-actions > * {
         width: 100%;
         text-align: center;
+    }
+}
+
+/* ================================================== */
+/*        RESPONSIVE FIX FOR SWIPER ARROWS            */
+/* ================================================== */
+
+@media (max-width: 820px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+        /* 1. Make the buttons smaller and perfectly circular */
+        width: 44px;
+        height: 44px;
+
+        /* 2. Give them a semi-transparent "frosted glass" look */
+        background-color: hsla(0, 0%, 100%, 0.5);
+        backdrop-filter: blur(2px); /* This enhances the glass effect */
+        box-shadow: none; /* Remove the larger desktop shadow */
+    }
+
+    .dark-mode .swiper-button-prev,
+    .dark-mode .swiper-button-next {
+        /* Dark mode version of the semi-transparent background */
+        background-color: hsla(0, 0%, 17%, 0.5);
+    }
+
+    /* 3. Reposition them to sit closer to the edges, over the content */
+    .swiper-button-prev {
+        left: 10px;
+    }
+
+    .swiper-button-next {
+        right: 10px;
     }
 }
