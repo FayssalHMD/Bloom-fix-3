@@ -4586,7 +4586,7 @@ ul {
 
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     /* Targets the container for the buttons in your modals */
     .prompt-modal-actions {
         flex-direction: column; /* Stacks the buttons vertically */
@@ -4596,8 +4596,10 @@ ul {
     /* Ensures both buttons take up the full width */
     .prompt-modal-actions > * {
         width: 100%;
+        text-align: center; /* Ensures text is centered inside the button */
     }
 }
+
 
 
 
