@@ -554,19 +554,29 @@
 
 @media (max-width: 960px) {
     .product-detail-layout {
-        /* CHANGED: Switched from Grid to Flexbox for better stacking */
+        /* This is the primary fix: Use flexbox to create a single vertical column */
         display: flex;
         flex-direction: column;
         gap: 2rem;
     }
 
     .product-image-gallery {
-        /* This ensures the image gallery is the first item when stacked */
+        /* Ensures the image gallery is always the first item in the stack */
         order: 1;
     }
 
+    .product-purchase-panel {
+        /* Ensures the purchase panel is always the second item */
+        order: 2;
+        width: 100%;
+        padding: 2.5rem 1.5rem;
+        border-radius: 24px;
+        box-shadow: none;
+        backdrop-filter: none;
+        background-color: transparent;
+    }
+
     .product-image-gallery::before {
-        /* Hiding the decorative shape on mobile improves performance */
         display: none;
     }
 
@@ -574,16 +584,8 @@
         filter: none;
     }
 
-    .product-purchase-panel {
-        /* This ensures the purchase panel is the second item */
-        order: 2;
-        width: 100%;
-        padding: 2.5rem 1.5rem;
-        border-radius: 24px;
-        box-shadow: none;
-        /* REMOVED: No need for a blur effect when it's not an overlay */
-        backdrop-filter: none;
-        background-color: transparent;
+    [dir="rtl"] .product-detail-layout {
+        flex-direction: column;
     }
 }
 
@@ -630,6 +632,10 @@
     gap: 1rem;             /* Adds a nice space between the two stacked items */
     align-items: center;   /* Ensures both items are centered horizontally */
 }
+
+ [dir="rtl"] .product-detail-layout {
+        flex-direction: column;
+    }
 }
 
 
@@ -916,9 +922,7 @@
 }
 
 /* --- Product Detail Page --- */
-[dir="rtl"] .product-detail-layout {
-    flex-direction: row-reverse;
-}
+
 [dir="rtl"] .product-purchase-panel {
     text-align: right;
 }

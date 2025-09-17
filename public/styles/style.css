@@ -4634,3 +4634,10 @@ ul {
         right: 10px;
     }
 }
+
+@media (max-width: 960px) {
+    html[dir="rtl"] .product-detail-layout {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}
