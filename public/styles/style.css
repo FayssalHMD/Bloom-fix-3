@@ -4641,3 +4641,25 @@ ul {
         flex-direction: column !important;
     }
 }
+
+
+@media (max-width: 600px) {
+    /* ... (all your other 600px styles remain here) ... */
+
+    .quantity-section {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    /* THIS IS THE CRUCIAL FIX FOR RTL */
+    [dir="rtl"] .quantity-section {
+        flex-direction: column !important; /* Force stacking */
+    }
+
+    [dir="rtl"] .price-container.pack-price-container {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 0.75rem;
+    }
+}
